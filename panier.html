@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LeBonBureau — Panier</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body data-active="cart">
+<div data-lbb-nav></div>
+
+<section class="page-hero">
+  <div class="wrap page-hero-inner">
+    <div>
+      <span class="page-kicker">Panier</span>
+      <h1 class="page-title">Votre sélection.</h1>
+      <p class="page-lead">Vérifiez vos bureaux, finitions et dimensions avant de passer à la livraison.</p>
+    </div>
+    <a href="index.html#catalogue" class="btn btn-ghost">Continuer mes achats</a>
+  </div>
+</section>
+
+<main class="shop-page">
+  <div class="wrap shop-grid" id="cartFilled">
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Articles</h2>
+          <p class="panel-sub" id="itemCount">0 article</p>
+        </div>
+      </div>
+      <div class="cart-lines" id="cartLines"></div>
+    </section>
+
+    <aside class="panel summary">
+      <div class="panel-pad">
+        <h2 class="section-title" style="font-size:30px;">Résumé</h2>
+        <div style="margin-top:18px;">
+          <div class="summary-row"><span>Sous-total</span><strong id="subtotal">0 DT</strong></div>
+          <div class="summary-row"><span>Livraison</span><strong>Offerte</strong></div>
+          <div class="summary-total"><span>Total</span><strong id="total">0 DT</strong></div>
+        </div>
+        <a href="checkout.html" class="btn btn-primary btn-block btn-lg" id="checkoutBtn">Passer à la livraison</a>
+        <div class="summary-note">Paiement bientôt disponible. Pour l'instant, le checkout est une interface UI-only.</div>
+        <div class="reassurance-mini">
+          <div><span id="iTruck"></span> Livraison offerte en Tunisie</div>
+          <div><span id="iShield"></span> Garantie jusqu'à 10 ans</div>
+          <div><span id="iClock"></span> 30 jours pour changer d'avis</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="wrap" id="cartEmpty" style="display:none;">
+    <div id="emptyMount"></div>
+  </div>
+</main>
+
+<div data-lbb-footer></div>
+<div data-lbb-toast></div>
+
+<script src="data.js"></script>
+<script src="components.js"></script>
+<script src="app.js"></script>
+<script>
+  document.getElementById('iTruck').innerHTML = LBB.components.icon('truck', 18);
+  document.getElementById('iShield').innerHTML = LBB.components.icon('shield', 18);
+  document.getElementById('iClock').innerHTML = LBB.components.icon('clock', 18);
+  document.getElementById('emptyMount').innerHTML = LBB.components.emptyState('Votre panier est vide.', 'Ajoutez un bureau depuis le catalogue pour préparer votre commande.', '<a href="index.html#catalogue" class="btn btn-primary btn-lg">Voir le catalogue</a>');
+</script>
+<script src="cart.js"></script>
+</body>
+</html>

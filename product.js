@@ -129,22 +129,5 @@
 
   // ---- Related (other products, up to 3) ----
   const related = LBB.products.filter(function (x) { return x.id !== p.id; }).slice(0, 3);
-  document.getElementById("relGrid").innerHTML = related.map(function (rp) {
-    const img = rp.images && rp.images.length ? rp.images[0] : "assets/desks/line-main.jpg";
-    const badge = rp.badge ? '<span class="badge' + (rp.oldPrice ? " promo" : "") + '">' + rp.badge + "</span>" : "";
-    return (
-      '<a class="card" href="produit.html?id=' + rp.id + '">' +
-        '<div class="card-media">' + badge + '<img src="' + img + '" alt="' + rp.name + '" /></div>' +
-        '<div class="card-body">' +
-          '<span class="card-cat">' + rp.categoryLabel + "</span>" +
-          '<h3 class="card-name">' + rp.name + "</h3>" +
-          '<p class="card-blurb">' + rp.blurb + "</p>" +
-          '<div class="card-foot"><div class="price"><span class="now">' + LBB.euro(rp.price) + "</span>" +
-            (rp.oldPrice ? '<span class="was">' + LBB.euro(rp.oldPrice) + "</span>" : "") + "</div>" +
-            '<span class="card-arrow"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>' +
-          "</div>" +
-        "</div>" +
-      "</a>"
-    );
-  }).join("");
+  document.getElementById("relGrid").innerHTML = related.map(LBB.components.productCard).join("");
 })();

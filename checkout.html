@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LeBonBureau — Checkout</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body data-active="checkout">
+<div data-lbb-nav></div>
+
+<section class="page-hero">
+  <div class="wrap page-hero-inner">
+    <div>
+      <span class="page-kicker">Livraison</span>
+      <h1 class="page-title">Où envoyer votre bureau ?</h1>
+      <p class="page-lead">Renseignez les informations nécessaires pour préparer la livraison. Aucun paiement réel n'est traité pour le moment.</p>
+    </div>
+    <a href="panier.html" class="btn btn-ghost">Retour au panier</a>
+  </div>
+</section>
+
+<main class="shop-page">
+  <div class="wrap shop-grid">
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Coordonnées & livraison</h2>
+          <p class="panel-sub">Les champs marqués sont nécessaires pour envoyer le bureau au destinataire.</p>
+        </div>
+      </div>
+      <form class="panel-pad" id="orderForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="firstName">Prénom <span class="req">*</span></label>
+            <input class="input" id="firstName" name="firstName" autocomplete="given-name" required placeholder="Ala" />
+          </div>
+          <div class="field">
+            <label for="lastName">Nom <span class="req">*</span></label>
+            <input class="input" id="lastName" name="lastName" autocomplete="family-name" required placeholder="Baganne" />
+          </div>
+          <div class="field">
+            <label for="email">Email <span style="color:var(--ink-faint);font-weight:500;">optionnel</span></label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="vous@email.com" />
+          </div>
+          <div class="field">
+            <label for="phone">Téléphone <span class="req">*</span></label>
+            <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+216 20 000 000" />
+          </div>
+          <div class="field">
+            <label for="governorate">Gouvernorat <span class="req">*</span></label>
+            <select class="select" id="governorate" name="governorate" required>
+              <option value="">Choisir</option>
+              <option>Tunis</option><option>Ariana</option><option>Ben Arous</option><option>Manouba</option><option>Nabeul</option><option>Sousse</option><option>Sfax</option><option>Monastir</option><option>Mahdia</option><option>Bizerte</option><option>Gabès</option><option>Médenine</option><option>Kairouan</option><option>Autre</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="city">Ville <span class="req">*</span></label>
+            <input class="input" id="city" name="city" autocomplete="address-level2" required placeholder="La Marsa" />
+          </div>
+          <div class="field full">
+            <label for="address">Adresse complète <span class="req">*</span></label>
+            <input class="input" id="address" name="address" autocomplete="street-address" required placeholder="Rue, numéro, immeuble, étage..." />
+          </div>
+          <div class="field full">
+            <label for="notes">Instructions de livraison <span style="color:var(--ink-faint);font-weight:500;">optionnel</span></label>
+            <textarea class="textarea" id="notes" name="notes" placeholder="Disponibilité, repère, personne à contacter..."></textarea>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;">
+          <span class="eyebrow">Mode de paiement</span>
+          <div class="payment-choice">
+            <div class="pay-option active"><strong>Paiement à la livraison</strong><span>Prévu pour la version fonctionnelle.</span></div>
+            <div class="pay-option"><strong>Carte bancaire</strong><span>UI seulement pour le moment.</span></div>
+          </div>
+        </div>
+
+        <div class="checkout-actions">
+          <a href="panier.html" class="btn btn-ghost">Modifier le panier</a>
+          <button class="btn btn-primary btn-lg" type="submit">Préparer la commande</button>
+        </div>
+        <div class="order-preview" id="orderPreview">Parfait — l'interface de commande est prête. La prochaine étape sera de brancher l'envoi réel de commande.</div>
+      </form>
+    </section>
+
+    <aside class="panel summary">
+      <div class="panel-pad">
+        <h2 class="section-title" style="font-size:30px;">Votre commande</h2>
+        <div id="summaryLines" style="margin-top:12px;"></div>
+        <div id="summaryEmpty" class="summary-note" style="display:none;">Votre panier est vide. Ajoutez un bureau avant de préparer une commande.</div>
+        <div style="margin-top:18px;">
+          <div class="summary-row"><span>Sous-total</span><strong id="subtotal">0 DT</strong></div>
+          <div class="summary-row"><span>Livraison</span><strong>Offerte</strong></div>
+          <div class="summary-total"><span>Total</span><strong id="total">0 DT</strong></div>
+        </div>
+        <div class="summary-note">Nous gardons ce checkout volontairement simple : coordonnées, livraison, récapitulatif.</div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<div data-lbb-footer></div>
+<div data-lbb-toast></div>
+
+<script src="data.js"></script>
+<script src="components.js"></script>
+<script src="app.js"></script>
+<script src="checkout.js"></script>
+</body>
+</html>
