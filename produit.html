@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LeBonBureau — Fiche produit</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .crumbs { padding: 26px 0 6px; font-size: 14px; color: var(--ink-faint); display: flex; gap: 8px; align-items: center; }
+  .crumbs a:hover { color: var(--ink); }
+  .crumbs span.sep { opacity: .5; }
+
+  .pd { padding: 22px 0 70px; }
+  .pd-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: start; }
+
+  /* Gallery */
+  .gallery { position: sticky; top: 92px; }
+  .gallery-main {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--sand-deep);
+    border: 1px solid var(--line);
+  }
+  .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+  .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+  .thumb {
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    border: 2px solid transparent;
+    background: var(--sand-deep);
+    cursor: pointer;
+    padding: 0;
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb.active { border-color: var(--green); }
+
+  /* Info column */
+  .pd-cat { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--green); }
+  .pd-title { font-size: clamp(34px, 4.4vw, 52px); line-height: 1.02; margin: 12px 0 8px; }
+  .pd-sub { font-size: 18px; color: var(--ink-soft); margin: 0 0 22px; }
+  .pd-priceline { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+  .pd-priceline .now { font-size: 34px; font-weight: 700; letter-spacing: -.02em; }
+  .pd-priceline .was { font-size: 19px; color: var(--ink-faint); text-decoration: line-through; }
+  .pd-priceline .save { font-size: 13px; font-weight: 700; color: #fff; background: var(--clay); padding: 4px 10px; border-radius: 999px; }
+  .pd-vat { font-size: 13.5px; color: var(--ink-faint); margin: 0 0 26px; }
+  .pd-desc { color: var(--ink-soft); font-size: 16.5px; line-height: 1.6; margin: 0 0 30px; max-width: 50ch; }
+
+  .opt { margin-bottom: 26px; }
+  .opt-label { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+  .opt-label .val { color: var(--ink-soft); font-weight: 500; }
+
+  .swatches { display: flex; gap: 12px; }
+  .swatch {
+    width: 44px; height: 44px;
+    border-radius: 999px;
+    border: 2px solid var(--line);
+    padding: 3px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .swatch:hover { transform: translateY(-2px); }
+  .swatch span { display: block; width: 100%; height: 100%; border-radius: 999px; }
+  .swatch.active { border-color: var(--ink); }
+
+  .sizes { display: flex; flex-wrap: wrap; gap: 10px; }
+  .size-btn {
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 10px;
+    padding: 11px 18px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    transition: all .15s ease;
+  }
+  .size-btn:hover { border-color: var(--ink); color: var(--ink); }
+  .size-btn.active { border-color: var(--ink); background: var(--ink); color: #fff; }
+
+  .buy-row { display: flex; gap: 14px; align-items: stretch; margin: 30px 0 22px; }
+  .qty {
+    display: flex; align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .qty button { width: 46px; height: 52px; border: none; background: #fff; font-size: 20px; color: var(--ink); }
+  .qty button:hover { background: var(--sand); }
+  .qty span { min-width: 38px; text-align: center; font-weight: 600; font-size: 16px; }
+
+  .reassure { display: grid; gap: 12px; border-top: 1px solid var(--line); padding-top: 22px; }
+  .reassure div { display: flex; gap: 11px; align-items: center; font-size: 14.5px; color: var(--ink-soft); }
+  .reassure svg { color: var(--green); flex: none; }
+
+  /* Spec + features section */
+  .detail-sections { background: var(--sand); border-top: 1px solid var(--line); padding: 72px 0; }
+  .ds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .ds-grid h2 { font-size: 30px; margin-bottom: 22px; }
+  .spec-table { width: 100%; border-collapse: collapse; }
+  .spec-table tr { border-bottom: 1px solid var(--line); }
+  .spec-table td { padding: 15px 0; font-size: 15.5px; }
+  .spec-table td:first-child { color: var(--ink-soft); }
+  .spec-table td:last-child { text-align: right; font-weight: 600; }
+  .feature-list { display: grid; gap: 16px; }
+  .feature {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .feature .ic { flex: none; width: 42px; height: 42px; border-radius: 11px; background: var(--green-soft); color: var(--green); display: grid; place-items: center; }
+  .feature h4 { font-family: var(--sans); font-size: 16px; font-weight: 700; margin: 0 0 4px; }
+  .feature p { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
+
+  /* Related */
+  .related { padding: 72px 0 30px; }
+  .related h2 { font-size: 30px; margin-bottom: 26px; }
+  .rel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+
+  @media (max-width: 960px) {
+    .pd-grid { grid-template-columns: 1fr; gap: 34px; }
+    .gallery { position: static; }
+    .ds-grid { grid-template-columns: 1fr; gap: 40px; }
+    .rel-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .rel-grid { grid-template-columns: 1fr; }
+    .buy-row { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Le<span class="dot">Bon</span>Bureau<span class="dot">.</span></a>
+    <nav class="nav-links">
+      <a href="index.html#catalogue">Catalogue</a>
+      <a href="index.html#ergonomie">Ergonomie</a>
+      <a href="index.html#engagements">Nos engagements</a>
+      <a href="index.html#newsletter">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="cart-btn" id="cartBtn" aria-label="Panier">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        Panier
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="crumbs">
+    <a href="index.html">Accueil</a><span class="sep">/</span>
+    <a href="index.html#catalogue">Catalogue</a><span class="sep">/</span>
+    <span id="crumbName">Produit</span>
+  </nav>
+</div>
+
+<!-- PRODUCT -->
+<main class="pd">
+  <div class="wrap pd-grid">
+    <!-- Gallery -->
+    <div class="gallery">
+      <div class="gallery-main"><img id="mainImg" alt="" /></div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+
+    <!-- Info -->
+    <div class="pd-info">
+      <span class="pd-cat" id="pdCat"></span>
+      <h1 class="pd-title" id="pdTitle"></h1>
+      <p class="pd-sub" id="pdSub"></p>
+      <div class="pd-priceline" id="priceline"></div>
+      <p class="pd-vat">TVA comprise · Livraison offerte partout en Tunisie</p>
+      <p class="pd-desc" id="pdDesc"></p>
+
+      <div class="opt">
+        <div class="opt-label">Finition <span class="val" id="colorVal"></span></div>
+        <div class="swatches" id="swatches"></div>
+      </div>
+
+      <div class="opt">
+        <div class="opt-label">Dimensions <span class="val" id="sizeVal"></span></div>
+        <div class="sizes" id="sizes"></div>
+      </div>
+
+      <div class="buy-row">
+        <div class="qty">
+          <button type="button" id="qMinus" aria-label="Moins">–</button>
+          <span id="qVal">1</span>
+          <button type="button" id="qPlus" aria-label="Plus">+</button>
+        </div>
+        <button class="btn btn-primary btn-lg btn-block" id="addBtn" style="flex:1;">Ajouter au panier</button>
+      </div>
+
+      <div class="reassure">
+        <div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="1.5"/><circle cx="18.5" cy="18.5" r="1.5"/></svg>Livraison offerte partout en Tunisie, suivi en temps réel</div>
+        <div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M12 7v5l3 2"/></svg>30 jours pour changer d'avis, retour gratuit</div>
+        <div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg><span id="warrantyLine">Garantie constructeur</span></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- SPECS + FEATURES -->
+<section class="detail-sections">
+  <div class="wrap ds-grid">
+    <div>
+      <h2 class="section-title">Caractéristiques</h2>
+      <table class="spec-table"><tbody id="specBody"></tbody></table>
+    </div>
+    <div>
+      <h2 class="section-title">Points forts</h2>
+      <div class="feature-list" id="featureList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="related">
+  <div class="wrap">
+    <h2 class="section-title">Vous aimerez aussi</h2>
+    <div class="rel-grid" id="relGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer-top">
+    <div class="footer-col">
+      <div class="brand">Le<span class="dot" style="color:var(--green);">Bon</span>Bureau<span style="color:var(--green);">.</span></div>
+      <p class="footer-blurb">La sélection tunisienne de bureaux ergonomiques pour gamers, développeurs et créatifs exigeants.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Catalogue</h4>
+      <ul>
+        <li><a href="index.html#catalogue">Gaming</a></li>
+        <li><a href="index.html#catalogue">Programmation</a></li>
+        <li><a href="index.html#catalogue">Assis-debout</a></li>
+        <li><a href="index.html#catalogue">Tous les bureaux</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Aide</h4>
+      <ul>
+        <li><a href="#">Livraison &amp; retours</a></li>
+        <li><a href="#">Guide des tailles</a></li>
+        <li><a href="#">Montage</a></li>
+        <li><a href="#">Nous contacter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Maison</h4>
+      <ul>
+        <li><a href="index.html#engagements">Nos engagements</a></li>
+        <li><a href="index.html#ergonomie">Ergonomie</a></li>
+        <li><a href="#">CGV</a></li>
+        <li><a href="#">Mentions légales</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2025 LeBonBureau — Tous droits réservés.</span>
+    <span>Paiement sécurisé · Visa · Mastercard · à la livraison</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script src="product.js"></script>
+</body>
+</html>

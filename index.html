@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LeBonBureau — Bureaux ergonomiques pour le gaming et le code</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ---------- Hero ---------- */
+  .hero { padding: 64px 0 40px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--green-soft);
+    color: var(--green-deep);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+  }
+  .hero-tag .pip { width: 7px; height: 7px; border-radius: 999px; background: var(--green); }
+  .hero h1 { margin-bottom: 22px; }
+  .hero h1 em { font-style: italic; color: var(--green); }
+  .hero p.lead { font-size: 19px; color: var(--ink-soft); max-width: 46ch; margin: 0 0 30px; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .hero-stats { display: flex; gap: 34px; margin-top: 40px; }
+  .hero-stat .n { font-family: var(--serif); font-size: 30px; font-weight: 600; line-height: 1; }
+  .hero-stat .l { font-size: 13.5px; color: var(--ink-faint); margin-top: 6px; }
+
+  .hero-visual {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 5 / 6;
+    background: var(--sand-deep);
+    box-shadow: var(--shadow-card);
+  }
+  .hero-visual img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-float {
+    position: absolute;
+    left: 18px; bottom: 18px; right: 18px;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(8px);
+    border-radius: 14px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-card);
+  }
+  .hero-float .t { font-weight: 600; font-size: 15px; }
+  .hero-float .s { font-size: 13px; color: var(--ink-faint); }
+
+  /* ---------- Logos / trust strip ---------- */
+  .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .trust-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-block: 22px;
+    flex-wrap: wrap;
+  }
+  .trust-item { display: flex; align-items: center; gap: 11px; color: var(--ink-soft); font-size: 14.5px; font-weight: 500; }
+  .trust-item svg { color: var(--green); flex: none; }
+
+  /* ---------- Listing ---------- */
+  .listing { padding: 76px 0 40px; }
+  .listing-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .listing-head p { color: var(--ink-soft); max-width: 42ch; margin: 12px 0 0; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .count-note { font-size: 14px; color: var(--ink-faint); margin: 22px 0 0; }
+
+  /* ---------- Green feature band ---------- */
+  .band {
+    background: var(--green);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    margin: 80px 0;
+    overflow: hidden;
+  }
+  .band-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .band-copy { padding: 60px 56px; }
+  .band-copy h2 { color: #fff; margin-bottom: 18px; }
+  .band-copy p { color: rgba(255,255,255,.78); font-size: 17px; max-width: 42ch; margin: 0 0 28px; }
+  .band-list { list-style: none; margin: 0 0 30px; padding: 0; display: grid; gap: 14px; }
+  .band-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15.5px; color: rgba(255,255,255,.9); }
+  .band-list svg { flex: none; margin-top: 2px; color: #fff; }
+  .band-visual { background: var(--green-deep); position: relative; min-height: 340px; }
+  .band-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .9; }
+
+  /* ---------- Ergonomics / how it works ---------- */
+  .ergo { padding: 30px 0 80px; }
+  .ergo-head { max-width: 56ch; margin: 0 auto 48px; text-align: center; }
+  .ergo-head p { color: var(--ink-soft); margin-top: 14px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step {
+    background: var(--sand);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px 28px;
+  }
+  .step .num {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--green);
+    border: 1px solid var(--green);
+    width: 38px; height: 38px;
+    border-radius: 999px;
+    display: grid; place-items: center;
+    margin-bottom: 18px;
+  }
+  .step h3 { font-size: 21px; margin-bottom: 9px; }
+  .step p { color: var(--ink-soft); font-size: 14.5px; margin: 0; }
+
+  /* ---------- Newsletter ---------- */
+  .news { background: var(--sand); border-top: 1px solid var(--line); }
+  .news-inner { padding-block: 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .news h2 { margin-bottom: 12px; }
+  .news p { color: var(--ink-soft); margin: 0; max-width: 40ch; }
+  .news-form { display: flex; gap: 12px; }
+  .news-form input {
+    flex: 1;
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 999px;
+    padding: 14px 20px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .news-form input:focus { outline: 2px solid var(--green); outline-offset: 1px; }
+
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero-visual { aspect-ratio: 5/4; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .band-grid { grid-template-columns: 1fr; }
+    .band-visual { min-height: 240px; order: -1; }
+    .steps { grid-template-columns: 1fr; }
+    .news-inner { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; }
+    .band-copy { padding: 40px 30px; }
+    .hero-stats { gap: 24px; }
+    .news-form { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Le<span class="dot">Bon</span>Bureau<span class="dot">.</span></a>
+    <nav class="nav-links">
+      <a href="#catalogue">Catalogue</a>
+      <a href="#ergonomie">Ergonomie</a>
+      <a href="#engagements">Nos engagements</a>
+      <a href="#newsletter">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="cart-btn" id="cartBtn" aria-label="Panier">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+        Panier
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="hero-tag"><span class="pip"></span>Sélection ergonomique · Édition IKEA</span>
+      <h1 class="display">Le bureau qui<br>tient la <em>distance</em>.</h1>
+      <p class="lead">Des bureaux ergonomiques choisis pour celles et ceux qui codent, jouent et créent pendant des heures. Confort, posture et style — sans compromis.</p>
+      <div class="hero-cta">
+        <a href="#catalogue" class="btn btn-primary btn-lg">Voir le catalogue</a>
+        <a href="#ergonomie" class="btn btn-ghost btn-lg">Pourquoi l'ergonomie ?</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="n">6</div><div class="l">modèles sélectionnés</div></div>
+        <div class="hero-stat"><div class="n">10 ans</div><div class="l">de garantie cadre</div></div>
+        <div class="hero-stat"><div class="n">Tunisie</div><div class="l">livraison offerte</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img id="heroImg" alt="Bureau ergonomique en situation" />
+      <div class="hero-float">
+        <div>
+          <div class="t">Atlas · Assis-debout</div>
+          <div class="s">Le best-seller de la maison</div>
+        </div>
+        <a href="produit.html?id=atlas" class="btn btn-dark" style="padding:10px 18px;font-size:14px;">Découvrir</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <div class="trust-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Montage simple, notice illustrée</div>
+    <div class="trust-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="1.5"/><circle cx="18.5" cy="18.5" r="1.5"/></svg>Livraison offerte en Tunisie</div>
+    <div class="trust-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>Garantie jusqu'à 10 ans</div>
+    <div class="trust-item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M12 7v5l3 2"/></svg>30 jours pour changer d'avis</div>
+  </div>
+</div>
+
+<!-- LISTING -->
+<section class="listing" id="catalogue">
+  <div class="wrap">
+    <div class="listing-head">
+      <div>
+        <span class="eyebrow">Le catalogue</span>
+        <h2 class="section-title" style="margin-top:10px;">Bureaux pour gamers &amp; développeurs</h2>
+        <p>Chaque modèle est sélectionné pour sa robustesse, sa surface de travail et sa posture. Cliquez pour tout savoir.</p>
+      </div>
+      <div class="chips" id="filters"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="count-note" id="countNote"></p>
+  </div>
+</section>
+
+<!-- GREEN BAND -->
+<div class="wrap">
+  <section class="band" id="engagements">
+    <div class="band-grid">
+      <div class="band-copy">
+        <span class="eyebrow on-green">Nos engagements</span>
+        <h2 class="section-title" style="margin-top:12px;">Pensés pour les longues sessions.</h2>
+        <p>On ne vend que des bureaux qu'on utiliserait nous-mêmes, huit heures par jour. Voilà ce que chaque modèle vous garantit.</p>
+        <ul class="band-list">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Hauteur adaptée à votre taille pour une posture neutre.</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Plateaux profonds : double écran et repose-poignets.</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Gestion des câbles intégrée, sans rallonge qui traîne.</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Matériaux durables, garantis plusieurs années.</li>
+        </ul>
+        <a href="#catalogue" class="btn" style="background:#fff;color:var(--green-deep);">Choisir mon bureau</a>
+      </div>
+      <div class="band-visual">
+        <img id="bandImg" alt="Espace de travail ergonomique" />
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ERGONOMIE -->
+<section class="ergo" id="ergonomie">
+  <div class="wrap">
+    <div class="ergo-head">
+      <span class="eyebrow">Bien choisir</span>
+      <h2 class="section-title" style="margin-top:10px;">Trouver le bon bureau en trois temps</h2>
+      <p>Pas besoin d'être ergonome. Trois questions suffisent pour viser juste.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Votre usage</h3>
+        <p>Gaming multi-écrans, développement concentré ou télétravail nomade — chaque profil a son format idéal.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Votre espace</h3>
+        <p>Mesurez la place disponible. Du compact 100 cm au plateau XXL 180 cm, il y a une taille pour chaque pièce.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Votre posture</h3>
+        <p>Hauteur fixe bien dimensionnée ou assis-debout réglable : on vous oriente vers la meilleure posture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="news" id="newsletter">
+  <div class="wrap news-inner">
+    <div>
+      <span class="eyebrow">Restons en contact</span>
+      <h2 class="section-title" style="margin-top:10px;">Les bons plans, sans le spam.</h2>
+      <p>Nouveautés, guides d'ergonomie et offres réservées. Un e-mail par mois, pas plus.</p>
+    </div>
+    <form class="news-form" id="newsForm">
+      <input type="email" placeholder="Votre adresse e-mail" required aria-label="Adresse e-mail" />
+      <button class="btn btn-primary" type="submit">S'inscrire</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" style="margin: 0px">
+  <div class="wrap footer-top">
+    <div class="footer-col">
+      <div class="brand">Le<span class="dot" style="color:var(--green);">Bon</span>Bureau<span style="color:var(--green);">.</span></div>
+      <p class="footer-blurb">La sélection tunisienne de bureaux ergonomiques pour gamers, développeurs et créatifs exigeants.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Catalogue</h4>
+      <ul>
+        <li><a href="#catalogue">Gaming</a></li>
+        <li><a href="#catalogue">Programmation</a></li>
+        <li><a href="#catalogue">Assis-debout</a></li>
+        <li><a href="#catalogue">Tous les bureaux</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Aide</h4>
+      <ul>
+        <li><a href="#">Livraison &amp; retours</a></li>
+        <li><a href="#">Guide des tailles</a></li>
+        <li><a href="#">Montage</a></li>
+        <li><a href="#">Nous contacter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Maison</h4>
+      <ul>
+        <li><a href="#engagements">Nos engagements</a></li>
+        <li><a href="#ergonomie">Ergonomie</a></li>
+        <li><a href="#">CGV</a></li>
+        <li><a href="#">Mentions légales</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2025 LeBonBureau — Tous droits réservés.</span>
+    <span>Paiement sécurisé · Visa · Mastercard · à la livraison</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  // Page-specific imagery + listing render
+  document.getElementById('heroImg').src = LBB.placeholder('ATLAS · ASSIS-DEBOUT', { w: 700, h: 840, bg:'#ece7dc', stripe:'#e2dccd' });
+  document.getElementById('bandImg').src = LBB.placeholder('SETUP ERGONOMIQUE', { w: 700, h: 700, bg:'#163f34', stripe:'#18493b', ink:'#7fae9f' });
+  LBB.renderListing();
+</script>
+</body>
+</html>
