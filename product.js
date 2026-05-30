@@ -12,16 +12,9 @@
   let sizeIdx = 0;
   let qty = 1;
 
-  const palettes = ["#ece7dc", "#e6e0d2", "#e9e4d8", "#efe9dd"];
   function galleryImg(i) {
-    const tones = [
-      { bg: "#ece7dc", stripe: "#e2dccd" },
-      { bg: "#e7efe9", stripe: "#dbe7df", ink: "#5f8a78" },
-      { bg: "#efe9dd", stripe: "#e6dccb" },
-      { bg: "#222019", stripe: "#2c2920", ink: "#8c8a80" }
-    ][i % 4];
-    const labels = [p.name.toUpperCase(), "VUE DÉTAIL", "EN SITUATION", "PLATEAU"];
-    return LBB.placeholder(labels[i % 4], Object.assign({ w: 800, h: 600 }, tones));
+    const images = p.images && p.images.length ? p.images : ["assets/desks/line-main.jpg"];
+    return images[i % images.length];
   }
 
   // ---- Head text ----
@@ -53,7 +46,8 @@
       t.classList.toggle("active", idx === i);
     });
   }
-  thumbs.innerHTML = [0, 1, 2, 3].map(function (i) {
+  const galleryItems = (p.images && p.images.length ? p.images : ["assets/desks/line-main.jpg"]).map(function (_, i) { return i; });
+  thumbs.innerHTML = galleryItems.map(function (i) {
     return '<button class="thumb" data-i="' + i + '"><img src="' + galleryImg(i) + '" alt="' + p.name + ' vue ' + (i + 1) + '" /></button>';
   }).join("");
   thumbs.querySelectorAll(".thumb").forEach(function (t) {
@@ -136,7 +130,7 @@
   // ---- Related (other products, up to 3) ----
   const related = LBB.products.filter(function (x) { return x.id !== p.id; }).slice(0, 3);
   document.getElementById("relGrid").innerHTML = related.map(function (rp) {
-    const img = LBB.placeholder(rp.name.toUpperCase(), {});
+    const img = rp.images && rp.images.length ? rp.images[0] : "assets/desks/line-main.jpg";
     const badge = rp.badge ? '<span class="badge' + (rp.oldPrice ? " promo" : "") + '">' + rp.badge + "</span>" : "";
     return (
       '<a class="card" href="produit.html?id=' + rp.id + '">' +

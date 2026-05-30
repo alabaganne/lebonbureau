@@ -10,6 +10,12 @@
       price: 1529,
       oldPrice: 1799,
       badge: "Best-seller",
+      images: [
+        "assets/desks/atlas-main.jpg",
+        "assets/desks/atlas-2.jpg",
+        "assets/desks/atlas-3.jpg",
+        "assets/desks/pulse-main.jpg"
+      ],
       blurb:
         "Plateau motorisé de 65 à 132 cm. La référence pour alterner posture assise et debout sans quitter son flow.",
       desc:
@@ -44,6 +50,12 @@
       price: 539,
       oldPrice: null,
       badge: null,
+      images: [
+        "assets/desks/nova-main.jpg",
+        "assets/desks/nova-2.jpg",
+        "assets/desks/nova-3.jpg",
+        "assets/desks/line-main.jpg"
+      ],
       blurb:
         "100 × 56 cm. Pensé pour un setup deux écrans dans un studio ou un coin de chambre.",
       desc:
@@ -77,6 +89,12 @@
       price: 1119,
       oldPrice: 1319,
       badge: "Nouveau",
+      images: [
+        "assets/desks/vector-main.jpg",
+        "assets/desks/vector-2.jpg",
+        "assets/desks/vector-3.jpg",
+        "assets/desks/nova-3.jpg"
+      ],
       blurb:
         "Format L de 160 × 140 cm. De la place pour trois écrans, le combo clavier-souris et le casque.",
       desc:
@@ -110,6 +128,12 @@
       price: 819,
       oldPrice: null,
       badge: null,
+      images: [
+        "assets/desks/pulse-main.jpg",
+        "assets/desks/pulse-2.jpg",
+        "assets/desks/pulse-3.jpg",
+        "assets/desks/atlas-2.jpg"
+      ],
       blurb:
         "L'assis-debout sans électronique. Manivelle douce, mécanisme garanti à vie.",
       desc:
@@ -144,6 +168,12 @@
       price: 1289,
       oldPrice: null,
       badge: null,
+      images: [
+        "assets/desks/quartz-main.jpg",
+        "assets/desks/quartz-2.jpg",
+        "assets/desks/quartz-3.jpg",
+        "assets/desks/vector-main.jpg"
+      ],
       blurb:
         "180 × 80 cm d'un seul tenant. Le plateau XXL pour les setups les plus ambitieux.",
       desc:
@@ -177,6 +207,12 @@
       price: 439,
       oldPrice: null,
       badge: "Petit prix",
+      images: [
+        "assets/desks/line-main.jpg",
+        "assets/desks/line-2.jpg",
+        "assets/desks/line-3.jpg",
+        "assets/desks/nova-2.jpg"
+      ],
       blurb:
         "Quatre pieds, un plateau franc. L'essentiel, bien fait, pour démarrer un setup propre.",
       desc:
@@ -211,33 +247,12 @@
     { id: "assis-debout", label: "Assis-debout" }
   ];
 
-  // Striped SVG placeholder — drop real product shots here later.
-  function placeholder(label, opts) {
-    opts = opts || {};
-    const w = opts.w || 800;
-    const h = opts.h || 600;
-    const bg = opts.bg || "#efece4";
-    const stripe = opts.stripe || "#e3dfd4";
-    const ink = opts.ink || "#9a978c";
-    const svg =
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">` +
-      `<defs><pattern id="p" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">` +
-      `<rect width="16" height="16" fill="${bg}"/>` +
-      `<rect width="8" height="16" fill="${stripe}"/></pattern></defs>` +
-      `<rect width="${w}" height="${h}" fill="url(#p)"/>` +
-      `<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" ` +
-      `font-family="ui-monospace, Menlo, monospace" font-size="${opts.fs || 22}" letter-spacing="1" fill="${ink}">${label}</text>` +
-      `</svg>`;
-    return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
-  }
-
   window.LBB = {
     products: PRODUCTS,
     categories: CATEGORIES,
     byId: function (id) {
       return PRODUCTS.find(function (p) { return p.id === id; });
     },
-    placeholder: placeholder,
     euro: function (n) {
       return n.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " DT";
     }

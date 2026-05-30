@@ -25,3 +25,4 @@ Implemented from the Claude Design handoff bundle `aKvJ4gZocwWrStxbgKZp7A`:
 - Deep forest-green accent sections/buttons.
 - French copy for Tunisia, Tunisian Dinar pricing (`DT`), and payment-on-delivery positioning.
 - Fraunces headings + Inter Tight body typography.
+- Product and lifestyle imagery stored locally under `assets/desks/`, sourced from IKEA product/lifestyle image URLs for the UI prototype.

@@ -45,7 +45,7 @@
       '<div class="price"><span class="now">' + LBB.euro(p.price) + "</span>" +
       (p.oldPrice ? '<span class="was">' + LBB.euro(p.oldPrice) + "</span>" : "") +
       "</div>";
-    const img = LBB.placeholder(p.name.toUpperCase(), {});
+    const img = p.images && p.images.length ? p.images[0] : "assets/desks/line-main.jpg";
     return (
       '<a class="card" href="produit.html?id=' + p.id + '">' +
         '<div class="card-media">' + badge +
