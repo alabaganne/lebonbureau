@@ -19,12 +19,12 @@ export default function ProductCard({
   lazy = true,
 }: ProductCardProps) {
   return (
-    <Link className="group flex flex-col bg-white border border-line rounded-card-lg overflow-hidden transition-[transform,box-shadow,border-color] duration-[.22s] ease-[ease] hover:-translate-y-1 hover:shadow-lift hover:border-transparent" href={`/product/${p.id}`}>
-      <div className="relative aspect-[4/3] bg-sand-deep overflow-hidden">
-        {p.badge && <span className={"absolute top-[14px] left-[14px] text-white text-[11.5px] font-bold tracking-[.06em] uppercase px-[11px] py-1.5 rounded-full " + (p.oldPrice ? "bg-clay" : "bg-ink")}>{p.badge}</span>}
+    <Link className="group flex flex-col shadow-sm bg-white rounded-card-lg overflow-hidden transition-all duration-150 ease-[ease] hover:-translate-y-1 hover:shadow-lift" href={`/product/${p.id}`}>
+      <div className="relative aspect-4/3 bg-sand-deep overflow-hidden">
+        {p.badge && <span className={"absolute top-4 left-4 text-white text-[11.5px] font-bold tracking-[.06em] uppercase px-3 py-1.5 rounded-full " + (p.oldPrice ? "bg-clay" : "bg-ink")}>{p.badge}</span>}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          className="w-full h-full object-cover transition-transform duration-[.4s] ease-[ease] group-hover:scale-[1.03]"
+          className="w-full h-full object-cover transition-transform duration-[.4s] ease-[ease]"
           src={productImg(p, imgWidth, imgHeight)}
           alt={p.name}
           loading={lazy ? "lazy" : undefined}
