@@ -15,20 +15,20 @@ const PROMISES = [
 export default function GreenBand() {
   return (
     <div className="wrap">
-      <section className="band" id="engagements">
-        <div className="band-grid">
-          <div className="band-copy">
+      <section className="bg-green text-white rounded-card-lg my-20 overflow-hidden" id="engagements">
+        <div className="grid grid-cols-2 max-[960px]:grid-cols-1">
+          <div className="px-14 py-[60px] max-[560px]:px-[30px] max-[560px]:py-10">
             <span className="eyebrow on-green">Nos engagements</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>
+            <h2 className="section-title text-white mb-[18px]" style={{ marginTop: 12 }}>
               Pensés pour les longues sessions.
             </h2>
-            <p>
+            <p className="text-white/78 text-[17px] max-w-[42ch] mb-7">
               On ne vend que des bureaux qu&apos;on utiliserait nous-mêmes, huit heures par jour.
               Voilà ce que chaque modèle vous garantit.
             </p>
-            <ul className="band-list">
+            <ul className="list-none mb-[30px] p-0 grid gap-[14px]">
               {PROMISES.map((text) => (
-                <li key={text}>
+                <li key={text} className="flex gap-3 items-start text-[15.5px] text-white/90 [&_svg]:flex-none [&_svg]:mt-0.5 [&_svg]:text-white">
                   <CheckIcon size={20} strokeWidth={2} />
                   {text}
                 </li>
@@ -38,9 +38,9 @@ export default function GreenBand() {
               Choisir mon bureau
             </Button>
           </div>
-          <div className="band-visual">
+          <div className="bg-green-deep relative min-h-[340px] max-[960px]:min-h-[240px] max-[960px]:order-[-1]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={img(30469967, 760, 760)} alt="Espace de travail ergonomique" />
+            <img className="absolute inset-0 w-full h-full object-cover opacity-90" src={img(30469967, 760, 760)} alt="Espace de travail ergonomique" />
           </div>
         </div>
       </section>

@@ -1,6 +1,4 @@
 import "./globals.css";
-import "../styles/storefront.css";
-import "../styles/admin.css";
 
 import type { Metadata } from "next";
 import { CartProvider } from "@/lib/cart";

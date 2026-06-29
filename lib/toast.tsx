@@ -32,7 +32,14 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   return (
     <ToastContext.Provider value={{ toast }}>
       {children}
-      <div className={"toast" + (show ? " show" : "")} role="status" aria-live="polite">
+      <div
+        className={
+          "fixed left-1/2 bottom-7 -translate-x-1/2 bg-ink text-white py-[13px] px-[22px] rounded-full text-[14.5px] font-medium shadow-lift pointer-events-none transition-[opacity,transform] duration-[250ms] ease-[ease] z-[80] " +
+          (show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5")
+        }
+        role="status"
+        aria-live="polite"
+      >
         {msg}
       </div>
     </ToastContext.Provider>

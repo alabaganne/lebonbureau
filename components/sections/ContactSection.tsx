@@ -27,56 +27,56 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="news" id="contact">
-      <div className="wrap news-inner" style={{ alignItems: "start" }}>
+    <section className="bg-sand border-t border-line" id="contact">
+      <div className="wrap py-[72px] grid grid-cols-2 gap-10 items-center max-[960px]:grid-cols-1" style={{ alignItems: "start" }}>
         <div>
           <span className="eyebrow">Contact</span>
-          <h2 className="section-title" style={{ marginTop: 10 }}>
+          <h2 className="section-title mb-3" style={{ marginTop: 10 }}>
             On vous répond, vite et bien.
           </h2>
-          <p style={{ marginBottom: 26 }}>
+          <p className="text-ink-soft m-0 max-w-[40ch]" style={{ marginBottom: 26 }}>
             Une question sur un bureau, votre commande ou la livraison&nbsp;? Écrivez-nous ou
             appelez-nous — un humain vous répond du lundi au samedi.
           </p>
-          <div className="contact-info">
-            <div className="contact-row">
-              <div className="ic"><PhoneIcon size={20} /></div>
+          <div className="flex flex-col gap-[14px]">
+            <div className="flex gap-4 items-start bg-white border border-line rounded-card px-[22px] py-5">
+              <div className="flex-none w-11 h-11 rounded-xl bg-green-soft text-green grid place-items-center"><PhoneIcon size={20} /></div>
               <div>
-                <div className="k">Téléphone</div>
-                <div className="v"><a href="tel:+21671000000">+216 71 000 000</a></div>
-                <div className="s">Lun–Sam · 9h00 – 18h00</div>
+                <div className="text-xs tracking-[.1em] uppercase font-semibold text-ink-faint mb-1">Téléphone</div>
+                <div className="text-base font-semibold [&_a]:text-ink [&_a:hover]:text-green"><a href="tel:+21671000000">+216 71 000 000</a></div>
+                <div className="text-[13.5px] text-ink-soft mt-0.5">Lun–Sam · 9h00 – 18h00</div>
               </div>
             </div>
-            <div className="contact-row">
-              <div className="ic"><MailIcon size={20} /></div>
+            <div className="flex gap-4 items-start bg-white border border-line rounded-card px-[22px] py-5">
+              <div className="flex-none w-11 h-11 rounded-xl bg-green-soft text-green grid place-items-center"><MailIcon size={20} /></div>
               <div>
-                <div className="k">E-mail</div>
-                <div className="v"><a href="mailto:bonjour@lebonbureau.tn">bonjour@lebonbureau.tn</a></div>
-                <div className="s">Réponse sous 24h ouvrées</div>
+                <div className="text-xs tracking-[.1em] uppercase font-semibold text-ink-faint mb-1">E-mail</div>
+                <div className="text-base font-semibold [&_a]:text-ink [&_a:hover]:text-green"><a href="mailto:bonjour@lebonbureau.tn">bonjour@lebonbureau.tn</a></div>
+                <div className="text-[13.5px] text-ink-soft mt-0.5">Réponse sous 24h ouvrées</div>
               </div>
             </div>
           </div>
         </div>
-        <form ref={formRef} className="form-card" onSubmit={onSubmit} noValidate style={{ margin: 0 }}>
-          <div className="form-card-head" style={{ marginBottom: 18 }}>
-            <h2 style={{ fontFamily: "var(--serif)", fontSize: 23 }}>Écrivez-nous</h2>
+        <form ref={formRef} className="bg-white border border-line rounded-card-lg px-8 py-[30px] mb-[22px]" onSubmit={onSubmit} noValidate style={{ margin: 0 }}>
+          <div className="flex items-center gap-[14px] mb-[22px]" style={{ marginBottom: 18 }}>
+            <h2 className="mb-3" style={{ fontFamily: "var(--serif)", fontSize: 23 }}>Écrivez-nous</h2>
           </div>
-          <div className="field-grid">
-            <div className="field">
-              <label htmlFor="cName">Nom complet <span className="req">*</span></label>
-              <input id="cName" name="cName" type="text" placeholder="Votre nom" required />
+          <div className="grid grid-cols-2 gap-x-[18px] gap-y-4 max-[560px]:grid-cols-1">
+            <div className="flex flex-col gap-[7px]">
+              <label className="text-[13.5px] font-semibold text-ink" htmlFor="cName">Nom complet <span className="text-clay">*</span></label>
+              <input className="text-[15px] text-ink bg-white border border-line rounded-[11px] px-[14px] py-3 transition-[border-color,box-shadow] duration-150 ease-[ease] focus:outline-none focus:border-green focus:shadow-[0_0_0_3px_#e7efe9] [&:invalid:not(:placeholder-shown)]:border-clay" id="cName" name="cName" type="text" placeholder="Votre nom" required />
             </div>
-            <div className="field">
-              <label htmlFor="cPhone">Téléphone <span className="req">*</span></label>
-              <input id="cPhone" name="cPhone" type="tel" inputMode="numeric" placeholder="20 123 456" required />
+            <div className="flex flex-col gap-[7px]">
+              <label className="text-[13.5px] font-semibold text-ink" htmlFor="cPhone">Téléphone <span className="text-clay">*</span></label>
+              <input className="text-[15px] text-ink bg-white border border-line rounded-[11px] px-[14px] py-3 transition-[border-color,box-shadow] duration-150 ease-[ease] focus:outline-none focus:border-green focus:shadow-[0_0_0_3px_#e7efe9] [&:invalid:not(:placeholder-shown)]:border-clay" id="cPhone" name="cPhone" type="tel" inputMode="numeric" placeholder="20 123 456" required />
             </div>
-            <div className="field col-2">
-              <label htmlFor="cEmail">E-mail <span className="opt">(optionnel)</span></label>
-              <input id="cEmail" name="cEmail" type="email" placeholder="vous@exemple.tn" />
+            <div className="flex flex-col gap-[7px] col-[1/-1]">
+              <label className="text-[13.5px] font-semibold text-ink" htmlFor="cEmail">E-mail <span className="text-ink-faint font-medium">(optionnel)</span></label>
+              <input className="text-[15px] text-ink bg-white border border-line rounded-[11px] px-[14px] py-3 transition-[border-color,box-shadow] duration-150 ease-[ease] focus:outline-none focus:border-green focus:shadow-[0_0_0_3px_#e7efe9] [&:invalid:not(:placeholder-shown)]:border-clay" id="cEmail" name="cEmail" type="email" placeholder="vous@exemple.tn" />
             </div>
-            <div className="field col-2">
-              <label htmlFor="cSubject">Sujet</label>
-              <select id="cSubject" name="cSubject" defaultValue="Question sur un produit">
+            <div className="flex flex-col gap-[7px] col-[1/-1]">
+              <label className="text-[13.5px] font-semibold text-ink" htmlFor="cSubject">Sujet</label>
+              <select className="text-[15px] text-ink bg-white border border-line rounded-[11px] px-[14px] py-3 transition-[border-color,box-shadow] duration-150 ease-[ease] focus:outline-none focus:border-green focus:shadow-[0_0_0_3px_#e7efe9] [&:invalid:not(:placeholder-shown)]:border-clay" id="cSubject" name="cSubject" defaultValue="Question sur un produit">
                 <option>Question sur un produit</option>
                 <option>Ma commande</option>
                 <option>Livraison &amp; retours</option>
@@ -84,9 +84,10 @@ export default function ContactSection() {
                 <option>Autre</option>
               </select>
             </div>
-            <div className="field col-2">
-              <label htmlFor="cMsg">Message <span className="req">*</span></label>
+            <div className="flex flex-col gap-[7px] col-[1/-1]">
+              <label className="text-[13.5px] font-semibold text-ink" htmlFor="cMsg">Message <span className="text-clay">*</span></label>
               <textarea
+                className="text-[15px] text-ink bg-white border border-line rounded-[11px] px-[14px] py-3 transition-[border-color,box-shadow] duration-150 ease-[ease] resize-y min-h-[80px] focus:outline-none focus:border-green focus:shadow-[0_0_0_3px_#e7efe9] [&:invalid:not(:placeholder-shown)]:border-clay"
                 id="cMsg"
                 name="cMsg"
                 placeholder="Comment pouvons-nous vous aider&nbsp;?"
@@ -98,7 +99,7 @@ export default function ContactSection() {
           <Button variant="primary" size="lg" block type="submit" style={{ marginTop: 18 }}>
             Envoyer le message
           </Button>
-          <p className="submit-note" style={{ marginTop: 14 }}>
+          <p className="text-[12.5px] text-ink-soft text-center max-w-[40ch]" style={{ marginTop: 14 }}>
             Nous ne partageons jamais vos coordonnées.
           </p>
         </form>

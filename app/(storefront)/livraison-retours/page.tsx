@@ -19,93 +19,93 @@ export default function DeliveryPage() {
         d&apos;avis. Voici comment ça marche.
       </PageHero>
 
-      <main className="content">
-        <div className="wrap doc-grid">
-          <nav className="doc-nav">
-            <span className="doc-nav-title">Sur cette page</span>
-            <a href="#zones">Zones &amp; délais</a>
-            <a href="#frais">Frais de livraison</a>
-            <a href="#reception">À la réception</a>
-            <a href="#retours">Retours &amp; remboursement</a>
-            <a href="#sav">Garantie &amp; SAV</a>
+      <main className="pt-[52px] pb-[84px]">
+        <div className="wrap grid grid-cols-[230px_1fr] gap-[52px] items-start max-[860px]:grid-cols-1 max-[860px]:gap-[28px]">
+          <nav className="sticky top-[92px] flex flex-col gap-[2px] max-[860px]:static max-[860px]:flex-row max-[860px]:flex-wrap max-[860px]:gap-[8px]">
+            <span className="text-xs tracking-[.12em] uppercase font-semibold text-ink-faint mb-[10px] max-[860px]:w-full max-[860px]:mb-[4px]">Sur cette page</span>
+            <a className="text-[14px] text-ink-soft px-[14px] py-[9px] border-l-2 border-l-line no-underline hover:text-ink hover:bg-sand hover:border-l-green max-[860px]:border max-[860px]:border-l-[1px] max-[860px]:border-line max-[860px]:rounded-none" href="#zones">Zones &amp; délais</a>
+            <a className="text-[14px] text-ink-soft px-[14px] py-[9px] border-l-2 border-l-line no-underline hover:text-ink hover:bg-sand hover:border-l-green max-[860px]:border max-[860px]:border-l-[1px] max-[860px]:border-line max-[860px]:rounded-none" href="#frais">Frais de livraison</a>
+            <a className="text-[14px] text-ink-soft px-[14px] py-[9px] border-l-2 border-l-line no-underline hover:text-ink hover:bg-sand hover:border-l-green max-[860px]:border max-[860px]:border-l-[1px] max-[860px]:border-line max-[860px]:rounded-none" href="#reception">À la réception</a>
+            <a className="text-[14px] text-ink-soft px-[14px] py-[9px] border-l-2 border-l-line no-underline hover:text-ink hover:bg-sand hover:border-l-green max-[860px]:border max-[860px]:border-l-[1px] max-[860px]:border-line max-[860px]:rounded-none" href="#retours">Retours &amp; remboursement</a>
+            <a className="text-[14px] text-ink-soft px-[14px] py-[9px] border-l-2 border-l-line no-underline hover:text-ink hover:bg-sand hover:border-l-green max-[860px]:border max-[860px]:border-l-[1px] max-[860px]:border-line max-[860px]:rounded-none" href="#sav">Garantie &amp; SAV</a>
           </nav>
 
-          <div className="prose">
-            <div className="callout">
-              <TruckIcon size={20} strokeWidth={1.9} />
-              <p>
-                <strong>Livraison gratuite</strong> sur tous les bureaux, dans les 24
+          <div className="max-w-[70ch]">
+            <div className="bg-green-soft border border-[#d4e4da] rounded-card px-[22px] py-5 mb-[22px] flex gap-[14px] items-start">
+              <TruckIcon size={20} strokeWidth={1.9} className="flex-none text-green mt-[2px]" />
+              <p className="text-green-deep text-[14.5px]">
+                <strong className="text-green-deep font-semibold">Livraison gratuite</strong> sur tous les bureaux, dans les 24
                 gouvernorats. Vous payez à la réception, en espèces.
               </p>
             </div>
 
-            <section id="zones">
-              <h2>Zones &amp; délais</h2>
-              <p>Nous livrons dans toute la Tunisie. Le délai dépend de votre gouvernorat&nbsp;:</p>
-              <ul>
-                <li><strong>Grand Tunis</strong> (Tunis, Ariana, Ben Arous, La Manouba)&nbsp;: 2 à 3 jours ouvrés.</li>
-                <li><strong>Sahel &amp; Nord-Est</strong> (Sousse, Monastir, Mahdia, Nabeul, Bizerte)&nbsp;: 3 à 4 jours ouvrés.</li>
-                <li><strong>Autres gouvernorats</strong>&nbsp;: 4 à 5 jours ouvrés.</li>
+            <section id="zones" className="scroll-mt-[90px]">
+              <h2 className="font-serif text-[27px] mb-[14px]">Zones &amp; délais</h2>
+              <p className="text-ink-soft mb-[15px]">Nous livrons dans toute la Tunisie. Le délai dépend de votre gouvernorat&nbsp;:</p>
+              <ul className="text-ink-soft mb-[16px] pl-5 list-disc">
+                <li className="mb-[7px] marker:text-green"><strong className="text-ink font-semibold">Grand Tunis</strong> (Tunis, Ariana, Ben Arous, La Manouba)&nbsp;: 2 à 3 jours ouvrés.</li>
+                <li className="mb-[7px] marker:text-green"><strong className="text-ink font-semibold">Sahel &amp; Nord-Est</strong> (Sousse, Monastir, Mahdia, Nabeul, Bizerte)&nbsp;: 3 à 4 jours ouvrés.</li>
+                <li className="mb-[7px] marker:text-green"><strong className="text-ink font-semibold">Autres gouvernorats</strong>&nbsp;: 4 à 5 jours ouvrés.</li>
               </ul>
-              <p>
+              <p className="text-ink-soft mb-[15px]">
                 Avant chaque livraison, nous vous appelons au numéro indiqué pour convenir d&apos;un
                 créneau qui vous arrange.
               </p>
             </section>
 
-            <section id="frais">
-              <h2>Frais de livraison</h2>
-              <p>
-                La livraison à domicile est <strong>offerte</strong> sur l&apos;intégralité du
+            <section id="frais" className="scroll-mt-[90px]">
+              <h2 className="font-serif text-[27px] mb-[14px] mt-11">Frais de livraison</h2>
+              <p className="text-ink-soft mb-[15px]">
+                La livraison à domicile est <strong className="text-ink font-semibold">offerte</strong> sur l&apos;intégralité du
                 catalogue, quel que soit le nombre de bureaux commandés. Aucun frais n&apos;est
                 ajouté au moment de payer&nbsp;: le total affiché dans votre panier est le total
                 final.
               </p>
             </section>
 
-            <section id="reception">
-              <h2>À la réception</h2>
-              <p>
-                Le règlement se fait <strong>à la livraison</strong>, en espèces, directement au
+            <section id="reception" className="scroll-mt-[90px]">
+              <h2 className="font-serif text-[27px] mb-[14px] mt-11">À la réception</h2>
+              <p className="text-ink-soft mb-[15px]">
+                Le règlement se fait <strong className="text-ink font-semibold">à la livraison</strong>, en espèces, directement au
                 livreur. Pensez à préparer l&apos;appoint si possible.
               </p>
-              <p>
+              <p className="text-ink-soft mb-[15px]">
                 Nous vous conseillons de vérifier l&apos;état du carton en présence du livreur. En
                 cas de dommage visible lié au transport, signalez-le immédiatement et contactez-nous
                 dans les 48&nbsp;heures avec une photo.
               </p>
             </section>
 
-            <section id="retours">
-              <h2>Retours &amp; remboursement</h2>
-              <p>
-                Vous disposez de <strong>30 jours</strong> après réception pour retourner un bureau
+            <section id="retours" className="scroll-mt-[90px]">
+              <h2 className="font-serif text-[27px] mb-[14px] mt-11">Retours &amp; remboursement</h2>
+              <p className="text-ink-soft mb-[15px]">
+                Vous disposez de <strong className="text-ink font-semibold">30 jours</strong> après réception pour retourner un bureau
                 qui ne vous convient pas.
               </p>
-              <h3>Conditions</h3>
-              <ul>
-                <li>Le produit doit être en bon état, sans dommage d&apos;usage.</li>
-                <li>Idéalement remballé dans son emballage d&apos;origine avec la visserie.</li>
-                <li>Une preuve d&apos;achat (numéro de commande #LBB-…) est nécessaire.</li>
+              <h3 className="text-[17px] font-bold mt-[22px] mb-[8px]">Conditions</h3>
+              <ul className="text-ink-soft mb-[16px] pl-5 list-disc">
+                <li className="mb-[7px] marker:text-green">Le produit doit être en bon état, sans dommage d&apos;usage.</li>
+                <li className="mb-[7px] marker:text-green">Idéalement remballé dans son emballage d&apos;origine avec la visserie.</li>
+                <li className="mb-[7px] marker:text-green">Une preuve d&apos;achat (numéro de commande #LBB-…) est nécessaire.</li>
               </ul>
-              <h3>Marche à suivre</h3>
-              <ul>
-                <li>Contactez-nous par <Link href="/#contact">téléphone ou e-mail</Link> en indiquant votre numéro de commande.</li>
-                <li>Nous organisons l&apos;enlèvement à votre domicile.</li>
-                <li>Après vérification, le remboursement est effectué sous 7 à 14 jours.</li>
+              <h3 className="text-[17px] font-bold mt-[22px] mb-[8px]">Marche à suivre</h3>
+              <ul className="text-ink-soft mb-[16px] pl-5 list-disc">
+                <li className="mb-[7px] marker:text-green">Contactez-nous par <Link className="text-green underline underline-offset-2" href="/#contact">téléphone ou e-mail</Link> en indiquant votre numéro de commande.</li>
+                <li className="mb-[7px] marker:text-green">Nous organisons l&apos;enlèvement à votre domicile.</li>
+                <li className="mb-[7px] marker:text-green">Après vérification, le remboursement est effectué sous 7 à 14 jours.</li>
               </ul>
             </section>
 
-            <section id="sav">
-              <h2>Garantie &amp; SAV</h2>
-              <p>
-                Tous nos bureaux sont garantis de <strong>5 à 10 ans</strong> selon le modèle (et à
+            <section id="sav" className="scroll-mt-[90px]">
+              <h2 className="font-serif text-[27px] mb-[14px] mt-11">Garantie &amp; SAV</h2>
+              <p className="text-ink-soft mb-[15px]">
+                Tous nos bureaux sont garantis de <strong className="text-ink font-semibold">5 à 10 ans</strong> selon le modèle (et à
                 vie sur le mécanisme du Pulse). La garantie couvre les défauts de fabrication et la
                 structure.
               </p>
-              <p>
+              <p className="text-ink-soft mb-[15px]">
                 Un souci après l&apos;achat&nbsp;? Écrivez-nous via la page{" "}
-                <Link href="/#contact">Contact</Link> — nous trouvons une solution rapidement (pièce
+                <Link className="text-green underline underline-offset-2" href="/#contact">Contact</Link> — nous trouvons une solution rapidement (pièce
                 de rechange, réparation ou remplacement).
               </p>
             </section>

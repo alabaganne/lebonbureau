@@ -20,21 +20,21 @@ const STEPS = [
 
 export default function ErgoSteps() {
   return (
-    <section className="ergo" id="ergonomie">
+    <section className="pt-[30px] pb-20" id="ergonomie">
       <div className="wrap">
-        <div className="ergo-head">
+        <div className="max-w-[56ch] mx-auto mb-12 text-center">
           <span className="eyebrow">Bien choisir</span>
           <h2 className="section-title" style={{ marginTop: 10 }}>
             Trouver le bon bureau en trois temps
           </h2>
-          <p>Pas besoin d&apos;être ergonome. Trois questions suffisent pour viser juste.</p>
+          <p className="text-ink-soft mt-[14px]">Pas besoin d&apos;être ergonome. Trois questions suffisent pour viser juste.</p>
         </div>
-        <div className="steps">
+        <div className="grid grid-cols-3 gap-6 max-[960px]:grid-cols-1">
           {STEPS.map((s) => (
-            <div className="step" key={s.n}>
-              <div className="num">{s.n}</div>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
+            <div className="bg-sand border border-line rounded-card px-7 py-[30px]" key={s.n}>
+              <div className="font-serif text-[15px] font-semibold text-green border border-green w-[38px] h-[38px] rounded-full grid place-items-center mb-[18px]">{s.n}</div>
+              <h3 className="text-[21px] mb-[9px]">{s.title}</h3>
+              <p className="text-ink-soft text-[14.5px]">{s.body}</p>
             </div>
           ))}
         </div>

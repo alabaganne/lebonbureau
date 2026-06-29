@@ -36,11 +36,11 @@ export default async function ProductPage({
   return (
     <>
       <div className="wrap">
-        <nav className="crumbs">
-          <Link href="/">Accueil</Link>
-          <span className="sep">/</span>
-          <Link href="/#catalogue">Catalogue</Link>
-          <span className="sep">/</span>
+        <nav className="pt-[26px] pb-[6px] text-[14px] text-ink-faint flex gap-[8px] items-center">
+          <Link href="/" className="hover:text-ink">Accueil</Link>
+          <span className="opacity-50">/</span>
+          <Link href="/#catalogue" className="hover:text-ink">Catalogue</Link>
+          <span className="opacity-50">/</span>
           <span>{p.name}</span>
         </nav>
       </div>
@@ -48,30 +48,30 @@ export default async function ProductPage({
       <ProductBuyBox product={p} />
 
       {/* SPECS + FEATURES */}
-      <section className="detail-sections">
-        <div className="wrap ds-grid">
+      <section className="bg-sand border-t border-line py-[72px]">
+        <div className="wrap grid grid-cols-2 gap-[56px] max-[960px]:grid-cols-1 max-[960px]:gap-[40px]">
           <div>
-            <h2 className="section-title">Caractéristiques</h2>
-            <table className="spec-table">
+            <h2 className="text-[30px] leading-[1.06] mb-[22px]">Caractéristiques</h2>
+            <table className="w-full border-collapse">
               <tbody>
                 {p.specs.map(([k, v]) => (
-                  <tr key={k}>
-                    <td>{k}</td>
-                    <td>{v}</td>
+                  <tr key={k} className="border-b border-line">
+                    <td className="py-[15px] text-[15.5px] text-ink-soft">{k}</td>
+                    <td className="py-[15px] text-[15.5px] text-right font-semibold">{v}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           <div>
-            <h2 className="section-title">Points forts</h2>
-            <div className="feature-list">
+            <h2 className="text-[30px] leading-[1.06] mb-[22px]">Points forts</h2>
+            <div className="grid gap-[16px]">
               {p.features.map(([title, body]) => (
-                <div className="feature" key={title}>
-                  <div className="ic"><CheckIcon size={20} strokeWidth={1.9} /></div>
+                <div className="bg-white border border-line rounded-card px-[22px] py-[20px] flex gap-[16px] items-start" key={title}>
+                  <div className="flex-none w-[42px] h-[42px] rounded-[11px] bg-green-soft text-green grid place-items-center"><CheckIcon size={20} strokeWidth={1.9} /></div>
                   <div>
-                    <h4>{title}</h4>
-                    <p>{body}</p>
+                    <h4 className="font-sans text-[16px] font-bold mt-0 mb-[4px]">{title}</h4>
+                    <p className="text-[14.5px] text-ink-soft m-0">{body}</p>
                   </div>
                 </div>
               ))}
@@ -81,10 +81,10 @@ export default async function ProductPage({
       </section>
 
       {/* RELATED */}
-      <section className="related">
+      <section className="pt-[72px] pb-[30px]">
         <div className="wrap">
-          <h2 className="section-title">Vous aimerez aussi</h2>
-          <div className="rel-grid">
+          <h2 className="text-[30px] leading-[1.06] mb-[26px]">Vous aimerez aussi</h2>
+          <div className="grid grid-cols-3 gap-[26px] max-[960px]:grid-cols-2 max-[560px]:grid-cols-1">
             {related.map((rp) => (
               <ProductCard key={rp.id} product={rp} imgWidth={600} imgHeight={450} lazy={false} />
             ))}

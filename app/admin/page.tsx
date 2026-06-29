@@ -113,7 +113,7 @@ export default function AdminDashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
-  if (!ready) return <div className="admin-body" />;
+  if (!ready) return <div className="bg-sand min-h-screen flex flex-col" />;
 
   // ---- Derived data ----
   const by = (s: OrderStatus) => orders.filter((o) => o.status === s).length;
@@ -182,24 +182,24 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="admin-body">
+    <div className="bg-sand min-h-screen flex flex-col">
       {/* TOPBAR */}
-      <header className="admin-bar">
-        <div className="wrap admin-bar-inner">
+      <header className="sticky top-0 z-50 bg-ink text-white border-b border-[rgba(255,255,255,.08)]">
+        <div className="wrap flex items-center justify-between h-[66px]">
           <div style={{ display: "flex", alignItems: "center" }}>
-            <Link className="brand" href="/admin">
-              Le<span className="dot">Bon</span>Bureau<span className="dot">.</span>
+            <Link className="inline-flex items-baseline gap-0.5 font-serif text-[21px] font-semibold tracking-[-.02em] text-white" href="/admin">
+              Le<span className="text-[#6fbfa6]">Bon</span>Bureau<span className="text-[#6fbfa6]">.</span>
             </Link>
-            <span className="admin-tag">Admin</span>
+            <span className="inline-flex items-center gap-[7px] text-[11.5px] font-bold tracking-[.12em] uppercase text-[#cfe7df] bg-[rgba(111,191,166,.14)] border border-[rgba(111,191,166,.3)] py-[5px] px-[11px] rounded-full ml-[14px]">Admin</span>
           </div>
-          <div className="admin-bar-actions">
-            <span className="who">
+          <div className="flex items-center gap-4">
+            <span className="text-[13.5px] text-[#b9b7ad]">
               Connecté en tant qu&apos;<strong style={{ color: "#fff" }}>admin</strong>
             </span>
-            <a className="logout-btn" href="/" target="_blank" rel="noopener noreferrer">
+            <a className="inline-flex items-center gap-2 bg-[rgba(255,255,255,.08)] text-white border border-[rgba(255,255,255,.16)] rounded-full py-[9px] px-4 text-[14px] font-semibold transition-[background] duration-150 ease-[ease] hover:bg-[rgba(255,255,255,.16)]" href="/" target="_blank" rel="noopener noreferrer">
               Voir la boutique
             </a>
-            <button className="logout-btn" onClick={onLogout}>
+            <button className="inline-flex items-center gap-2 bg-[rgba(255,255,255,.08)] text-white border border-[rgba(255,255,255,.16)] rounded-full py-[9px] px-4 text-[14px] font-semibold transition-[background] duration-150 ease-[ease] hover:bg-[rgba(255,255,255,.16)]" onClick={onLogout}>
               <LogoutIcon size={15} />
               Déconnexion
             </button>
@@ -207,72 +207,73 @@ export default function AdminDashboard() {
         </div>
       </header>
 
-      <main className="admin-main">
+      <main className="flex-1 pt-[34px] pb-[70px]">
         <div className="wrap">
-          <div className="admin-head">
+          <div className="flex items-end justify-between gap-6 flex-wrap mb-[26px]">
             <div>
-              <h1>Commandes</h1>
-              <p>{headSub}</p>
+              <h1 className="font-serif text-[clamp(28px,3.4vw,40px)] leading-[1.05]">Commandes</h1>
+              <p className="text-ink-soft mt-2 text-[15px]">{headSub}</p>
             </div>
-            <button className="step-btn" onClick={onSeed} title="Ajouter des commandes de démonstration">
+            <button className="inline-flex items-center gap-[7px] border border-line bg-sand rounded-full py-2 px-[15px] text-[13.5px] font-semibold text-ink transition-all duration-[140ms] ease-[ease] hover:border-ink" onClick={onSeed} title="Ajouter des commandes de démonstration">
               <PlusIcon size={15} />
               Données démo
             </button>
           </div>
 
           {/* Stats */}
-          <div className="stats">
+          <div className="grid grid-cols-5 gap-[16px] mb-[30px] max-[1040px]:grid-cols-3 max-[600px]:grid-cols-2">
             {stats.map((c) => (
-              <div className={"stat" + (c.accent ? " accent" : "")} key={c.l}>
-                <div className="n">{c.n}</div>
-                <div className="l">{c.l}</div>
+              <div className="bg-white border border-line rounded-card py-[18px] px-5" key={c.l}>
+                <div className={"font-serif text-[32px] font-semibold leading-none tracking-[-.01em]" + (c.accent ? " text-green" : "")}>{c.n}</div>
+                <div className="text-[12.5px] text-ink-faint mt-2 tracking-[.04em] uppercase font-semibold">{c.l}</div>
               </div>
             ))}
           </div>
 
           {/* Segment toggle */}
-          <div className="seg-control">
+          <div className="inline-flex gap-[5px] bg-white border border-line rounded-full p-[5px] mb-[22px]">
             <button
-              className={"seg-btn" + (segment === "actives" ? " active" : "")}
+              className={"inline-flex items-center gap-[9px] border-none bg-transparent cursor-pointer rounded-full py-2.5 px-5 text-[14.5px] font-semibold transition-[background,color] duration-150 ease-[ease] [&_svg]:opacity-85 " + (segment === "actives" ? "bg-ink text-white" : "text-ink-soft hover:text-ink")}
               onClick={() => selectSegment("actives")}
             >
               <ClockCircleIcon size={15} />
               Commandes actives
-              <span className="seg-count">{countInSeg("actives")}</span>
+              <span className={"min-w-[22px] h-[22px] px-[7px] rounded-full text-[12px] font-bold inline-flex items-center justify-center " + (segment === "actives" ? "bg-[rgba(255,255,255,.22)] text-white" : "bg-sand-deep text-ink-soft")}>{countInSeg("actives")}</span>
             </button>
             <button
-              className={"seg-btn" + (segment === "archive" ? " active" : "")}
+              className={"inline-flex items-center gap-[9px] border-none bg-transparent cursor-pointer rounded-full py-2.5 px-5 text-[14.5px] font-semibold transition-[background,color] duration-150 ease-[ease] [&_svg]:opacity-85 " + (segment === "archive" ? "bg-ink text-white" : "text-ink-soft hover:text-ink")}
               onClick={() => selectSegment("archive")}
             >
               <ArchiveIcon size={15} strokeWidth={1.9} />
               Archive
-              <span className="seg-count">{countInSeg("archive")}</span>
+              <span className={"min-w-[22px] h-[22px] px-[7px] rounded-full text-[12px] font-bold inline-flex items-center justify-center " + (segment === "archive" ? "bg-[rgba(255,255,255,.22)] text-white" : "bg-sand-deep text-ink-soft")}>{countInSeg("archive")}</span>
             </button>
           </div>
 
           {/* Toolbar */}
-          <div className="order-toolbar">
-            <div className="tabs">
+          <div className="flex items-center justify-between gap-[16px] flex-wrap mb-5">
+            <div className="flex flex-wrap gap-[9px]">
               {tabs.map((t) => (
                 <button
                   key={t.id}
-                  className={"tab" + (t.id === activeTab ? " active" : "")}
+                  className={"inline-flex items-center gap-2 border rounded-full py-2 px-4 text-[14px] font-medium transition-all duration-150 ease-[ease] " + (t.id === activeTab ? "bg-ink text-white border-ink" : "bg-white border-line text-ink-soft hover:border-ink hover:text-ink")}
                   onClick={() => {
                     setActiveTab(t.id);
                     setPage(1);
                   }}
                 >
                   {t.label}
-                  <span className="pill">{t.count}</span>
+                  <span className={"min-w-[20px] h-5 px-1.5 rounded-full text-[11.5px] font-bold inline-flex items-center justify-center " + (t.id === activeTab ? "bg-[rgba(255,255,255,.2)] text-white" : "bg-sand-deep text-ink-soft")}>{t.count}</span>
                 </button>
               ))}
             </div>
-            <div className="search-box">
+            <div className="relative [&>svg]:absolute [&>svg]:left-[14px] [&>svg]:top-1/2 [&>svg]:-translate-y-1/2 [&>svg]:text-ink-faint max-[600px]:w-full">
               <SearchIcon size={16} />
               <input
                 type="search"
                 placeholder="Rechercher (nom, téléphone, ville…)"
                 aria-label="Rechercher une commande"
+                className="border border-line bg-white rounded-full py-2.5 pr-4 pl-[38px] font-[inherit] text-[14px] w-[240px] text-ink focus:outline-none focus:border-green focus:shadow-[0_0_0_3px_var(--color-green-soft)] max-[600px]:w-full"
                 value={query}
                 onChange={(e) => {
                   setQuery(e.target.value.trim().toLowerCase());
@@ -283,12 +284,12 @@ export default function AdminDashboard() {
           </div>
 
           {/* Orders */}
-          <div className="orders">
+          <div className="flex flex-col gap-[16px]">
             {slice.length === 0 ? (
-              <div className="admin-empty">
-                <div className="ic"><ArchiveIcon size={26} strokeWidth={1.6} /></div>
-                <h2>Aucune commande</h2>
-                <p>
+              <div className="text-center py-[70px] px-6 bg-white border border-dashed border-line rounded-card-lg">
+                <div className="w-[60px] h-[60px] rounded-full bg-sand grid place-items-center mx-auto mb-[18px] text-ink-faint"><ArchiveIcon size={26} strokeWidth={1.6} /></div>
+                <h2 className="font-serif text-[24px] mb-2">Aucune commande</h2>
+                <p className="text-ink-soft mx-auto max-w-[40ch]">
                   {query || activeTab !== "toutes"
                     ? "Aucune commande ne correspond à ce filtre."
                     : segment === "archive"
@@ -331,59 +332,59 @@ function OrderCard({ o, onStatus }: { o: Order; onStatus: (num: string, s: Order
   const payLabel = o.payment === "card" ? "Carte bancaire" : "À la livraison";
 
   return (
-    <div className="order-card" style={styleVars}>
-      <div className="oc-top">
-        <div className="oc-field">
-          <div className="oc-num">{o.num}</div>
-          <div className="oc-date">{fmtDate(o.createdAt)}</div>
+    <div className="bg-[var(--st-soft,#fff)] border border-line rounded-card-lg overflow-hidden" style={styleVars}>
+      <div className="grid grid-cols-[1.1fr_1.2fr_1fr_1.1fr_auto] gap-[18px] items-center py-[18px] px-[22px] max-[1040px]:grid-cols-2 max-[1040px]:gap-[16px_20px] max-[600px]:grid-cols-1">
+        <div>
+          <div className="font-serif text-[18px] font-semibold">{o.num}</div>
+          <div className="text-[12.5px] text-ink-faint mt-[3px]">{fmtDate(o.createdAt)}</div>
         </div>
-        <div className="oc-field">
-          <div className="k">Client</div>
-          <div className="v">{o.firstName} {o.lastName}</div>
-          <a className="v sub tel-link" href={telHref(o.phone)}>{fmtPhone(o.phone)}</a>
+        <div>
+          <div className="text-[11px] tracking-[.1em] uppercase font-semibold text-ink-faint mb-1">Client</div>
+          <div className="text-[15px] font-semibold text-ink">{o.firstName} {o.lastName}</div>
+          <a className="text-[13.5px] font-bold text-green hover:underline" href={telHref(o.phone)}>{fmtPhone(o.phone)}</a>
         </div>
-        <div className="oc-field">
-          <div className="k">Livraison</div>
-          <div className="v city-line">
+        <div>
+          <div className="text-[11px] tracking-[.1em] uppercase font-semibold text-ink-faint mb-1">Livraison</div>
+          <div className="text-[15px] font-semibold text-ink inline-flex items-center gap-[6px] [&>svg]:text-ink-faint">
             <PinSmallIcon size={14} />
             {o.city}
           </div>
-          <div className="v sub">{o.gov} · {o.zip}</div>
+          <div className="text-[13.5px] font-medium text-ink-soft">{o.gov} · {o.zip}</div>
         </div>
-        <div className="oc-field">
-          <div className="k">Bureau(x)</div>
-          <div className="desk-chips">
+        <div>
+          <div className="text-[11px] tracking-[.1em] uppercase font-semibold text-ink-faint mb-1">Bureau(x)</div>
+          <div className="flex flex-wrap gap-[7px]">
             {o.items.map((it, i) => (
               <a
                 key={i}
-                className="desk-chip"
+                className="inline-flex items-center gap-[7px] bg-sand border border-line rounded-full py-[5px] pr-[11px] pl-[7px] text-[13px] font-semibold text-ink transition-[border-color,background] duration-150 ease-[ease] hover:border-green hover:bg-green-soft [&>svg]:text-ink-faint"
                 href={`/product/${it.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 title={`Ouvrir la fiche ${it.name}`}
               >
-                <span className="qbadge">×{it.qty}</span>
+                <span className="bg-ink text-white text-[11px] font-bold rounded-full py-px px-[7px]">×{it.qty}</span>
                 {it.name}
-                {it.size && <span className="sz">· {it.size}</span>}
+                {it.size && <span className="text-ink-faint font-medium">· {it.size}</span>}
                 <ExternalIcon size={13} />
               </a>
             ))}
           </div>
         </div>
-        <div className="oc-field oc-status-cell" style={{ textAlign: "right" }}>
-          <span className="status-badge"><span className="dot" />{st.label}</span>
-          <div className="oc-total" style={{ marginTop: 8 }}>{formatDT(o.total)}</div>
+        <div className="max-[1040px]:col-span-full max-[1040px]:flex max-[1040px]:justify-between max-[1040px]:items-center" style={{ textAlign: "right" }}>
+          <span className="inline-flex items-center gap-[7px] text-[12.5px] font-bold py-[5px] px-3 rounded-full bg-[var(--st-color,var(--color-ink-soft))] text-white"><span className="w-[7px] h-[7px] rounded-full bg-current" />{st.label}</span>
+          <div className="font-serif text-[20px] font-semibold whitespace-nowrap" style={{ marginTop: 8 }}>{formatDT(o.total)}</div>
         </div>
       </div>
 
-      <div className="oc-actions">
-        <div className="step-btns">
+      <div className="flex items-center justify-between gap-[14px] py-[14px] px-[22px] border-t border-line bg-white flex-wrap">
+        <div className="flex flex-wrap gap-2">
           {PROGRESS.map((sid) => {
             const reached = o.status !== "annulee" && st.idx >= STATUS[sid].idx && st.idx >= 0;
             return (
               <button
                 key={sid}
-                className={"step-btn" + (reached ? " done" : "")}
+                className={"inline-flex items-center gap-[7px] border rounded-full py-2 px-[15px] text-[13.5px] font-semibold transition-all duration-[140ms] ease-[ease] " + (reached ? "border-green bg-green text-white" : "border-line bg-sand text-ink hover:border-ink")}
                 onClick={() => onStatus(o.num, sid)}
               >
                 {reached && <CheckIcon size={13} strokeWidth={2.4} />}
@@ -392,15 +393,15 @@ function OrderCard({ o, onStatus }: { o: Order; onStatus: (num: string, s: Order
             );
           })}
           {o.status === "annulee" ? (
-            <button className="step-btn" onClick={() => onStatus(o.num, "nouvelle")}>Rétablir</button>
+            <button className="inline-flex items-center gap-[7px] border border-line bg-sand rounded-full py-2 px-[15px] text-[13.5px] font-semibold text-ink transition-all duration-[140ms] ease-[ease] hover:border-ink" onClick={() => onStatus(o.num, "nouvelle")}>Rétablir</button>
           ) : (
-            <button className="step-btn cancel" onClick={() => onStatus(o.num, "annulee")}>Annuler</button>
+            <button className="inline-flex items-center gap-[7px] border border-line bg-sand rounded-full py-2 px-[15px] text-[13.5px] font-semibold text-ink transition-all duration-[140ms] ease-[ease] hover:border-clay hover:text-clay" onClick={() => onStatus(o.num, "annulee")}>Annuler</button>
           )}
         </div>
-        <div className="oc-extra" style={{ gap: 10 }}>
-          <span className="pay-tag">{payLabel}</span>
+        <div className="flex items-center text-[13px] text-ink-soft" style={{ gap: 10 }}>
+          <span className="text-[12px] font-semibold text-ink-soft bg-sand border border-line rounded-full py-1 px-[10px]">{payLabel}</span>
           {o.notes && (
-            <span className="oc-extra">
+            <span className="flex items-center gap-2 text-[13px] text-ink-soft [&>svg]:text-ink-faint [&>svg]:flex-none">
               <NoteIcon size={14} />
               {o.notes}
             </span>
@@ -424,12 +425,12 @@ function Pager({
       : start + 1 + "–" + (start + shown) + " sur " + totalCount;
 
   return (
-    <div className="pagination">
-      <div className="pager-info">{info}</div>
+    <div className="flex items-center justify-between gap-[16px] mt-[28px] flex-wrap">
+      <div className="text-[13.5px] text-ink-faint font-medium">{info}</div>
       {totalPages > 1 && (
-        <div className="pager-btns">
+        <div className="flex items-center gap-1.5">
           <button
-            className="pager-btn nav"
+            className="min-w-[40px] h-10 px-0 border border-line bg-white rounded-[11px] text-[14px] font-semibold text-ink inline-flex items-center justify-center transition-[border-color,background,color] duration-[140ms] ease-[ease] hover:enabled:border-ink disabled:opacity-40 disabled:cursor-default"
             disabled={page === 1}
             aria-label="Page précédente"
             onClick={() => onPage(page - 1)}
@@ -438,11 +439,11 @@ function Pager({
           </button>
           {pageWindow(page, totalPages).map((n, i) =>
             n === "…" ? (
-              <span className="pager-ellipsis" key={"e" + i}>…</span>
+              <span className="px-1.5 text-ink-faint font-bold self-end" key={"e" + i}>…</span>
             ) : (
               <button
                 key={n}
-                className={"pager-btn" + (n === page ? " active" : "")}
+                className={"min-w-[40px] h-10 px-3 border rounded-[11px] text-[14px] font-semibold inline-flex items-center justify-center transition-[border-color,background,color] duration-[140ms] ease-[ease] hover:enabled:border-ink disabled:opacity-40 disabled:cursor-default " + (n === page ? "bg-ink text-white border-ink" : "border-line bg-white text-ink")}
                 onClick={() => onPage(n)}
               >
                 {n}
@@ -450,7 +451,7 @@ function Pager({
             )
           )}
           <button
-            className="pager-btn nav"
+            className="min-w-[40px] h-10 px-0 border border-line bg-white rounded-[11px] text-[14px] font-semibold text-ink inline-flex items-center justify-center transition-[border-color,background,color] duration-[140ms] ease-[ease] hover:enabled:border-ink disabled:opacity-40 disabled:cursor-default"
             disabled={page === totalPages}
             aria-label="Page suivante"
             onClick={() => onPage(page + 1)}
