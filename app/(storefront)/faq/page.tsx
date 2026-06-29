@@ -19,7 +19,7 @@ function FaqItem({ q, children }: { q: ReactNode; children: ReactNode }) {
         {q}
         <ChevronDownIcon size={18} className="flex-none text-ink-faint transition-transform duration-[220ms] ease-[ease] group-open:rotate-180 group-open:text-green" />
       </summary>
-      <div className="pb-[22px] text-ink-soft max-w-[64ch] text-[15px] leading-[1.6] [&_p]:mb-[12px] [&_a]:text-green [&_a]:underline">{children}</div>
+      <div className="pb-6 text-ink-soft max-w-[64ch] text-[15px] leading-[1.6] [&_p]:mb-[12px] [&_a]:text-green [&_a]:underline">{children}</div>
     </details>
   );
 }
@@ -38,7 +38,7 @@ export default function FaqPage() {
 
       <main className="pt-[52px] pb-[84px]">
         <div className="wrap max-w-[780px]">
-          <h2 className="font-serif text-[22px] mb-[6px] scroll-mt-[90px]" id="commande">Commande &amp; paiement</h2>
+          <h2 className="font-serif text-6 mb-[6px] scroll-mt-[90px]" id="commande">Commande &amp; paiement</h2>
           <FaqItem q="Comment passer commande&nbsp;?">
             <p>
               Ajoutez un bureau au panier, choisissez la finition et la taille, puis validez. Au
@@ -59,7 +59,7 @@ export default function FaqPage() {
             </p>
           </FaqItem>
 
-          <h2 className="font-serif text-[22px] mt-10 mb-[6px] scroll-mt-[90px]" id="livraison">Livraison</h2>
+          <h2 className="font-serif text-6 mt-10 mb-[6px] scroll-mt-[90px]" id="livraison">Livraison</h2>
           <FaqItem q="Quels sont les délais de livraison&nbsp;?">
             <p>
               Comptez 2 à 5 jours ouvrés selon le gouvernorat. Nous vous appelons pour convenir
@@ -80,7 +80,7 @@ export default function FaqPage() {
             </p>
           </FaqItem>
 
-          <h2 className="font-serif text-[22px] mt-10 mb-[6px] scroll-mt-[90px]" id="dimensions">Dimensions &amp; choix</h2>
+          <h2 className="font-serif text-6 mt-10 mb-[6px] scroll-mt-[90px]" id="dimensions">Dimensions &amp; choix</h2>
           <FaqItem q="Comment choisir la bonne taille&nbsp;?">
             <p>
               Mesurez l&apos;espace disponible avant de commander. Pour un seul écran,
@@ -102,7 +102,7 @@ export default function FaqPage() {
             </p>
           </FaqItem>
 
-          <h2 className="font-serif text-[22px] mt-10 mb-[6px] scroll-mt-[90px]" id="montage">Montage</h2>
+          <h2 className="font-serif text-6 mt-10 mb-[6px] scroll-mt-[90px]" id="montage">Montage</h2>
           <FaqItem q="Le montage est-il compliqué&nbsp;?">
             <p>
               Non. Chaque bureau est livré avec une notice illustrée et la visserie nécessaire.
@@ -117,7 +117,7 @@ export default function FaqPage() {
             </p>
           </FaqItem>
 
-          <h2 className="font-serif text-[22px] mt-10 mb-[6px] scroll-mt-[90px]" id="garantie">Garantie &amp; retours</h2>
+          <h2 className="font-serif text-6 mt-10 mb-[6px] scroll-mt-[90px]" id="garantie">Garantie &amp; retours</h2>
           <FaqItem q="Quelle est la durée de garantie&nbsp;?">
             <p>
               De 5 ans à 10 ans selon le modèle (et à vie sur le mécanisme du Pulse). La durée

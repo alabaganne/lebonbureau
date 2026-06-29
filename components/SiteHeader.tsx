@@ -46,7 +46,7 @@ export default function SiteHeader() {
         </nav>
         <div className="flex items-center gap-[14px]">
           <Link
-            className="relative inline-flex items-center gap-[9px] border border-line bg-white rounded-full py-[9px] pr-4 pl-[14px] font-semibold text-[14px] transition-colors duration-150 ease-[ease] hover:border-ink"
+            className="relative inline-flex items-center gap-2 border border-line bg-white rounded-full py-[9px] pr-4 pl-[14px] font-semibold text-[14px] transition-colors duration-150 ease-[ease] hover:border-ink"
             href="/cart"
             aria-label="Panier"
           >

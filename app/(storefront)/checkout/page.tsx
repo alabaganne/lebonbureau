@@ -146,7 +146,7 @@ export default function CheckoutPage() {
           livraison à domicile.
         </p>
         <div className="border border-line rounded-card-lg bg-sand px-7 py-[26px] text-left mb-7">
-          <div className="flex justify-between py-2 text-[15px]"><span className="text-ink-soft">Numéro de commande</span><span className="font-serif text-[22px] font-semibold text-green">{confirmation.num}</span></div>
+          <div className="flex justify-between py-2 text-[15px]"><span className="text-ink-soft">Numéro de commande</span><span className="font-serif text-6 font-semibold text-green">{confirmation.num}</span></div>
           <hr className="border-0 border-t border-line my-3" />
           <div className="flex justify-between py-2 text-[15px]"><span className="text-ink-soft">Livraison à</span><span className="font-semibold">{confirmation.addr}</span></div>
           <div className="flex justify-between py-2 text-[15px]"><span className="text-ink-soft">Téléphone</span><span className="font-semibold">{confirmation.phone}</span></div>
@@ -177,14 +177,14 @@ export default function CheckoutPage() {
 
       <form className="wrap grid grid-cols-[1.55fr_.95fr] gap-10 items-start pt-5 pb-20 max-[980px]:grid-cols-1" onSubmit={onSubmit} noValidate>
         <div>
-          <div className="flex items-center gap-[9px] text-[13px] bg-green-soft text-green-deep px-4 py-2.5 rounded-full w-fit mb-[22px] font-semibold">
+          <div className="flex items-center gap-2 text-[13px] bg-green-soft text-green-deep px-4 py-2.5 rounded-full w-fit mb-6 font-semibold">
             <LockIcon size={15} strokeWidth={1.9} />
             Vos informations sont chiffrées et confidentielles
           </div>
 
           {/* 1. Coordonnées */}
-          <section className="bg-white border border-line rounded-card-lg px-8 py-[30px] mb-[22px]">
-            <div className="flex items-center gap-[14px] mb-[22px]">
+          <section className="bg-white border border-line rounded-card-lg px-8 py-[30px] mb-6">
+            <div className="flex items-center gap-[14px] mb-6">
               <span className="w-[34px] h-[34px] flex-none rounded-full bg-green text-white font-bold text-[15px] grid place-items-center">1</span>
               <h2 className="font-serif text-[23px]">Vos coordonnées</h2>
             </div>
@@ -214,8 +214,8 @@ export default function CheckoutPage() {
           </section>
 
           {/* 2. Adresse de livraison */}
-          <section className="bg-white border border-line rounded-card-lg px-8 py-[30px] mb-[22px]">
-            <div className="flex items-center gap-[14px] mb-[22px]">
+          <section className="bg-white border border-line rounded-card-lg px-8 py-[30px] mb-6">
+            <div className="flex items-center gap-[14px] mb-6">
               <span className="w-[34px] h-[34px] flex-none rounded-full bg-green text-white font-bold text-[15px] grid place-items-center">2</span>
               <h2 className="font-serif text-[23px]">Adresse de livraison</h2>
             </div>
@@ -257,8 +257,8 @@ export default function CheckoutPage() {
           </section>
 
           {/* 3. Paiement */}
-          <section className="bg-white border border-line rounded-card-lg px-8 py-[30px] mb-[22px]">
-            <div className="flex items-center gap-[14px] mb-[22px]">
+          <section className="bg-white border border-line rounded-card-lg px-8 py-[30px] mb-6">
+            <div className="flex items-center gap-[14px] mb-6">
               <span className="w-[34px] h-[34px] flex-none rounded-full bg-green text-white font-bold text-[15px] grid place-items-center">3</span>
               <h2 className="font-serif text-[23px]">Mode de paiement</h2>
             </div>
@@ -283,7 +283,7 @@ export default function CheckoutPage() {
 
         {/* Summary */}
         <aside className="sticky top-[92px] bg-sand border border-line rounded-card-lg pt-[26px] px-[26px] pb-[28px] max-[980px]:static max-[980px]:order-[-1]">
-          <h3 className="font-serif text-[22px] mb-[18px]">Votre commande</h3>
+          <h3 className="font-serif text-6 mb-[18px]">Votre commande</h3>
           <ul className="list-none mb-4 p-0 grid gap-3">
             {items.map((it) => (
               <li key={it.id + it.color + it.size} className="flex gap-3 items-center text-[14px]">

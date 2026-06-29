@@ -39,7 +39,7 @@ export default function ContactSection() {
             appelez-nous — un humain vous répond du lundi au samedi.
           </p>
           <div className="flex flex-col gap-[14px]">
-            <div className="flex gap-4 items-start bg-white border border-line rounded-card px-[22px] py-5">
+            <div className="flex gap-4 items-start bg-white border border-line rounded-card px-6 py-5">
               <div className="flex-none w-11 h-11 rounded-xl bg-green-soft text-green grid place-items-center"><PhoneIcon size={20} /></div>
               <div>
                 <div className="text-xs tracking-[.1em] uppercase font-semibold text-ink-faint mb-1">Téléphone</div>
@@ -47,7 +47,7 @@ export default function ContactSection() {
                 <div className="text-[13.5px] text-ink-soft mt-0.5">Lun–Sam · 9h00 – 18h00</div>
               </div>
             </div>
-            <div className="flex gap-4 items-start bg-white border border-line rounded-card px-[22px] py-5">
+            <div className="flex gap-4 items-start bg-white border border-line rounded-card px-6 py-5">
               <div className="flex-none w-11 h-11 rounded-xl bg-green-soft text-green grid place-items-center"><MailIcon size={20} /></div>
               <div>
                 <div className="text-xs tracking-[.1em] uppercase font-semibold text-ink-faint mb-1">E-mail</div>
@@ -57,8 +57,8 @@ export default function ContactSection() {
             </div>
           </div>
         </div>
-        <form ref={formRef} className="bg-white border border-line rounded-card-lg px-8 py-[30px] mb-[22px]" onSubmit={onSubmit} noValidate style={{ margin: 0 }}>
-          <div className="flex items-center gap-[14px] mb-[22px]" style={{ marginBottom: 18 }}>
+        <form ref={formRef} className="bg-white border border-line rounded-card-lg px-8 py-[30px] mb-6" onSubmit={onSubmit} noValidate style={{ margin: 0 }}>
+          <div className="flex items-center gap-[14px] mb-6" style={{ marginBottom: 18 }}>
             <h2 className="mb-3" style={{ fontFamily: "var(--serif)", fontSize: 23 }}>Écrivez-nous</h2>
           </div>
           <div className="grid grid-cols-2 gap-x-[18px] gap-y-4 max-[560px]:grid-cols-1">

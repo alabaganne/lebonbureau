@@ -50,11 +50,11 @@ export default function AdminLoginPage() {
               Le<span className="text-green">Bon</span>Bureau
               <span className="text-green">.</span>
             </span>
-            <div className="text-[12px] tracking-[.16em] uppercase font-semibold text-green mb-[22px]">Espace administrateur</div>
+            <div className="text-[12px] tracking-[.16em] uppercase font-semibold text-green mb-6">Espace administrateur</div>
             <h1 className="font-serif text-[27px] mb-1.5">Connexion</h1>
             <p className="text-ink-soft text-[14.5px] mb-6">Accédez au tableau de bord pour suivre et traiter les commandes.</p>
 
-            <div className={(error ? "flex" : "hidden") + " items-center gap-[9px] bg-[#f9e9e3] border border-[#eccabc] text-[#a23c1f] rounded-[11px] py-[11px] px-[14px] text-[13.5px] font-medium mb-[18px]"}>
+            <div className={(error ? "flex" : "hidden") + " items-center gap-2 bg-[#f9e9e3] border border-[#eccabc] text-[#a23c1f] rounded-[11px] py-[11px] px-[14px] text-[13.5px] font-medium mb-[18px]"}>
               <AlertIcon size={16} />
               <span>{error || "E-mail ou mot de passe incorrect."}</span>
             </div>
@@ -77,7 +77,7 @@ export default function AdminLoginPage() {
               <code className="bg-sand border border-line rounded-md py-px px-[7px] text-[12px] text-ink">admin@lebonbureau.tn</code> · mot de passe <code className="bg-sand border border-line rounded-md py-px px-[7px] text-[12px] text-ink">lebonbureau</code>
             </div>
           </form>
-          <Link className="inline-flex items-center gap-[7px] mt-[22px] text-[13.5px] text-ink-soft hover:text-ink" href="/">
+          <Link className="inline-flex items-center gap-[7px] mt-6 text-[13.5px] text-ink-soft hover:text-ink" href="/">
             <ArrowLeftIcon size={15} />
             Retour à la boutique
           </Link>

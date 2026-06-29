@@ -30,13 +30,13 @@ export default function ProductCard({
           loading={lazy ? "lazy" : undefined}
         />
       </div>
-      <div className="px-[22px] pt-5 pb-[22px] flex flex-col gap-2.5 flex-1">
+      <div className="px-6 pt-5 pb-6 flex flex-col gap-2.5 flex-1">
         <span className="text-xs tracking-[.12em] uppercase font-semibold text-green">{p.categoryLabel}</span>
         <h3 className="font-serif text-[25px] leading-[1.05]">{p.name}</h3>
-        <p className="text-ink-soft text-[14.5px] leading-[1.5] flex-1">{p.blurb}</p>
+        <p className="text-ink-soft text-[14.5px] leading-normal flex-1">{p.blurb}</p>
         <div className="flex items-end justify-between mt-1">
-          <div className="flex items-baseline gap-[9px]">
-            <span className="text-[22px] font-bold tracking-[-.01em]">{formatDT(p.price)}</span>
+          <div className="flex items-baseline gap-2">
+            <span className="text-6 font-bold tracking-[-.01em]">{formatDT(p.price)}</span>
             {p.oldPrice && <span className="text-[15px] text-ink-faint line-through">{formatDT(p.oldPrice)}</span>}
           </div>
           <span className="w-10 h-10 rounded-full border border-line grid place-items-center transition-[background,color,border-color] duration-[.18s] ease-[ease] text-ink group-hover:bg-green group-hover:text-white group-hover:border-green" aria-hidden="true">

@@ -20,14 +20,14 @@ export default function CartPage() {
     const key = itemKey(it);
     const cat = it.categoryLabel || "Bureau";
     return (
-      <div className="grid grid-cols-[104px_1fr_auto] gap-5 items-center py-[22px] border-b border-line first:pt-1 max-[560px]:grid-cols-[80px_1fr] max-[560px]:gap-[14px] max-[560px]:[grid-template-areas:'thumb_info'_'right_right']">
+      <div className="grid grid-cols-[104px_1fr_auto] gap-5 items-center py-6 border-b border-line first:pt-1 max-[560px]:grid-cols-[80px_1fr] max-[560px]:gap-[14px] max-[560px]:[grid-template-areas:'thumb_info'_'right_right']">
         <div className="w-[104px] h-[84px] rounded-[12px] overflow-hidden bg-sand-deep border border-line max-[560px]:w-20 max-[560px]:h-[70px] max-[560px]:[grid-area:thumb]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={photoImg(it.photo, it.name, 320, 240)} alt={it.name} className="w-full h-full object-cover" />
         </div>
         <div className="max-[560px]:[grid-area:info]">
           <div className="text-[11.5px] tracking-[.12em] uppercase font-semibold text-green">{cat}</div>
-          <div className="font-serif text-[22px] leading-[1.1] mt-[3px] mb-[6px]">{it.name}</div>
+          <div className="font-serif text-6 leading-[1.1] mt-[3px] mb-[6px]">{it.name}</div>
           <div className="text-[13.5px] text-ink-soft flex flex-wrap gap-x-[14px] gap-y-[6px]">
             <span>Finition&nbsp;: <b className="text-ink font-semibold">{it.color}</b></span>
             <span>Dimensions&nbsp;: <b className="text-ink font-semibold">{it.size}</b></span>
@@ -74,7 +74,7 @@ export default function CartPage() {
       ) : items.length === 0 ? (
         <main className="wrap" style={{ paddingBottom: 80 }}>
           <div className="text-center pt-[70px] px-6 pb-20 border border-dashed border-line rounded-card-lg bg-sand">
-            <div className="w-16 h-16 rounded-full bg-white border border-line grid place-items-center mx-auto mb-[22px] text-ink-faint"><CartIcon size={28} strokeWidth={1.6} /></div>
+            <div className="w-16 h-16 rounded-full bg-white border border-line grid place-items-center mx-auto mb-6 text-ink-faint"><CartIcon size={28} strokeWidth={1.6} /></div>
             <h2 className="font-serif text-[28px] mb-2.5">Votre panier est vide</h2>
             <p className="text-ink-soft mx-auto mb-[26px] max-w-[38ch]">
               Parcourez notre sélection de bureaux ergonomiques et trouvez celui qui tiendra la
@@ -91,7 +91,7 @@ export default function CartPage() {
                 <CartRow key={itemKey(it)} it={it} />
               ))}
             </div>
-            <div className="flex justify-between items-center mt-[22px] flex-wrap gap-[14px]">
+            <div className="flex justify-between items-center mt-6 flex-wrap gap-[14px]">
               <Link className="inline-flex items-center gap-[7px] text-[14px] font-medium text-ink-soft mb-[18px] transition-colors duration-150 hover:text-ink" href="/#catalogue" style={{ margin: 0 }}>
                 <PlusIcon size={16} />
                 Ajouter un autre bureau
@@ -110,7 +110,7 @@ export default function CartPage() {
           </div>
 
           <aside className="sticky top-[92px] bg-sand border border-line rounded-card-lg pt-[26px] px-[26px] pb-[28px] max-[980px]:static">
-            <h3 className="font-serif text-[22px] mb-[18px]">Récapitulatif</h3>
+            <h3 className="font-serif text-6 mb-[18px]">Récapitulatif</h3>
             <div className="flex justify-between items-baseline text-[15px] py-[9px] text-ink-soft">
               <span>Sous-total</span>
               <span className="text-ink font-semibold">{formatDT(total)}</span>

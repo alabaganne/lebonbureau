@@ -51,7 +51,7 @@ export default async function ProductPage({
       <section className="bg-sand border-t border-line py-[72px]">
         <div className="wrap grid grid-cols-2 gap-[56px] max-[960px]:grid-cols-1 max-[960px]:gap-[40px]">
           <div>
-            <h2 className="text-[30px] leading-[1.06] mb-[22px]">Caractéristiques</h2>
+            <h2 className="text-[30px] leading-[1.06] mb-6">Caractéristiques</h2>
             <table className="w-full border-collapse">
               <tbody>
                 {p.specs.map(([k, v]) => (
@@ -64,10 +64,10 @@ export default async function ProductPage({
             </table>
           </div>
           <div>
-            <h2 className="text-[30px] leading-[1.06] mb-[22px]">Points forts</h2>
+            <h2 className="text-[30px] leading-[1.06] mb-6">Points forts</h2>
             <div className="grid gap-[16px]">
               {p.features.map(([title, body]) => (
-                <div className="bg-white border border-line rounded-card px-[22px] py-[20px] flex gap-[16px] items-start" key={title}>
+                <div className="bg-white border border-line rounded-card px-6 py-[20px] flex gap-[16px] items-start" key={title}>
                   <div className="flex-none w-[42px] h-[42px] rounded-[11px] bg-green-soft text-green grid place-items-center"><CheckIcon size={20} strokeWidth={1.9} /></div>
                   <div>
                     <h4 className="font-sans text-[16px] font-bold mt-0 mb-[4px]">{title}</h4>

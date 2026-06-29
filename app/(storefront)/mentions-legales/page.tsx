@@ -96,13 +96,13 @@ export default function LegalPage() {
                 Les présentes conditions régissent les ventes conclues sur le site lebonbureau.tn.
                 Toute commande implique l&apos;acceptation pleine et entière des présentes CGV.
               </p>
-              <h3 className="text-[17px] font-bold mt-[22px] mb-[8px]">Produits</h3>
+              <h3 className="text-[17px] font-bold mt-6 mb-[8px]">Produits</h3>
               <p className="text-ink-soft mb-[15px]">
                 Les bureaux sont présentés avec le plus grand soin. Les photographies et descriptifs
                 sont les plus fidèles possibles mais ne sauraient engager LeBonBureau pour de
                 légères différences (teinte du bois, rendu d&apos;écran).
               </p>
-              <h3 className="text-[17px] font-bold mt-[22px] mb-[8px]">Commande</h3>
+              <h3 className="text-[17px] font-bold mt-6 mb-[8px]">Commande</h3>
               <p className="text-ink-soft mb-[15px]">
                 La commande est validée une fois les informations de livraison renseignées et
                 confirmées par le client. Un récapitulatif est affiché avant validation finale.

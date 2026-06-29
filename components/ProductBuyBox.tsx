@@ -177,7 +177,7 @@ export default function ProductBuyBox({ product: p }: { product: Product }) {
 
   return (
     <>
-      <main className="pt-[22px] pb-[70px] max-[720px]:pb-[96px]">
+      <main className="pt-6 pb-[70px] max-[720px]:pb-[96px]">
         <div className="wrap grid grid-cols-[1.05fr_.95fr] gap-[56px] items-start max-[960px]:grid-cols-1 max-[960px]:gap-[34px]">
           {/* Gallery */}
           <div className="sticky top-[92px] max-[960px]:static">
@@ -218,7 +218,7 @@ export default function ProductBuyBox({ product: p }: { product: Product }) {
               </div>
             )}
 
-            <p className="text-[18px] text-ink-soft mt-0 mb-[22px]">{p.sub}</p>
+            <p className="text-[18px] text-ink-soft mt-0 mb-6">{p.sub}</p>
 
             <div className="flex items-baseline gap-[12px] mb-[6px]">
               <span className="text-[34px] font-bold tracking-[-.02em]">{formatDT(p.price)}</span>
@@ -227,7 +227,7 @@ export default function ProductBuyBox({ product: p }: { product: Product }) {
             </div>
             <p className="text-[13.5px] text-ink-faint mt-0 mb-[26px]">TVA comprise · Livraison offerte partout en Tunisie</p>
 
-            <div className={"inline-flex items-center gap-[9px] text-[14px] font-semibold mb-[22px] " + (stockLow ? "text-clay" : "text-green")}>
+            <div className={"inline-flex items-center gap-2 text-[14px] font-semibold mb-6 " + (stockLow ? "text-clay" : "text-green")}>
               <span className={"w-[8px] h-[8px] rounded-full flex-none " + (stockLow ? "bg-clay shadow-[0_0_0_4px_#f6e7e0]" : "bg-green shadow-[0_0_0_4px_var(--color-green-soft)]")} />
               {stockLow
                 ? `Plus que ${p.stock} en stock — expédié sous 48 h`
@@ -272,7 +272,7 @@ export default function ProductBuyBox({ product: p }: { product: Product }) {
               </div>
             </div>
 
-            <div className="flex gap-[14px] items-stretch mt-[30px] mb-[22px] max-[560px]:flex-wrap">
+            <div className="flex gap-[14px] items-stretch mt-[30px] mb-6 max-[560px]:flex-wrap">
               <div className="flex items-center border border-line rounded-full overflow-hidden">
                 <button type="button" aria-label="Moins" className="w-[46px] h-[52px] border-none bg-white text-[20px] text-ink hover:bg-sand" onClick={() => setQty((q) => Math.max(1, q - 1))}>
                   –
@@ -290,16 +290,16 @@ export default function ProductBuyBox({ product: p }: { product: Product }) {
               <CartIcon size={18} strokeWidth={1.9} />
               Ajouter au panier
             </Button>
-            <p className="flex items-start gap-[9px] text-[13.5px] text-ink-soft mt-[4px] mb-[22px] [&_svg]:text-green [&_svg]:flex-none [&_svg]:mt-[2px] [&_strong]:text-ink">
+            <p className="flex items-start gap-2 text-[13.5px] text-ink-soft mt-[4px] mb-6 [&_svg]:text-green [&_svg]:flex-none [&_svg]:mt-[2px] [&_strong]:text-ink">
               <CheckTinyIcon size={15} />
               Paiement <strong>à la livraison</strong> — aucune avance, vous payez à réception.
             </p>
 
             {/* Inline express order (COD) */}
             {showExpress && (
-              <div className="border-[1.5px] border-green bg-[linear-gradient(var(--color-green-soft),#fff_120px)] rounded-card-lg px-[22px] pt-[22px] pb-[24px] mt-[4px] mb-[22px]" ref={expressRef}>
+              <div className="border-[1.5px] border-green bg-[linear-gradient(var(--color-green-soft),#fff_120px)] rounded-card-lg px-6 pt-6 pb-[24px] mt-[4px] mb-6" ref={expressRef}>
                 <div className="mb-[16px]">
-                  <div className="flex items-center gap-[9px] font-serif text-[21px] text-green-deep [&_svg]:text-green">
+                  <div className="flex items-center gap-2 font-serif text-[21px] text-green-deep [&_svg]:text-green">
                     <BoltIcon size={18} />
                     Commande express
                   </div>
@@ -388,7 +388,7 @@ export default function ProductBuyBox({ product: p }: { product: Product }) {
 
             {/* Inline confirmation */}
             {done && (
-              <div className="text-center border-[1.5px] border-green bg-green-soft rounded-card-lg pt-[30px] px-[24px] pb-[28px] mt-[4px] mb-[22px]" ref={doneRef}>
+              <div className="text-center border-[1.5px] border-green bg-green-soft rounded-card-lg pt-[30px] px-[24px] pb-[28px] mt-[4px] mb-6" ref={doneRef}>
                 <div className="w-[60px] h-[60px] rounded-full bg-green text-white grid place-items-center mt-0 mx-auto mb-[16px] shadow-[0_10px_26px_-10px_rgba(31,93,76,.5)]"><CheckBigIcon size={30} /></div>
                 <h3 className="text-[23px] mb-[8px]">Merci {done.firstName}, commande confirmée !</h3>
                 <p className="text-ink-soft text-[14.5px] mt-0 mx-auto mb-[16px] max-w-[38ch]">Merci, nous vous appelons très vite pour convenir d&apos;un créneau de livraison.</p>
@@ -399,7 +399,7 @@ export default function ProductBuyBox({ product: p }: { product: Product }) {
               </div>
             )}
 
-            <div className="grid gap-[12px] border-t border-line pt-[22px] [&_svg]:text-green [&_svg]:flex-none">
+            <div className="grid gap-[12px] border-t border-line pt-6 [&_svg]:text-green [&_svg]:flex-none">
               <div className="flex gap-[11px] items-center text-[14.5px] text-ink-soft"><TruckIcon size={19} />Livraison offerte partout en Tunisie, suivi en temps réel</div>
               <div className="flex gap-[11px] items-center text-[14.5px] text-ink-soft"><ClockIcon size={19} />30 jours pour changer d&apos;avis, retour gratuit</div>
               <div className="flex gap-[11px] items-center text-[14.5px] text-ink-soft"><ShieldIcon size={19} /><span>Garantie {warranty.toLowerCase()}</span></div>

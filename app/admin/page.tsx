@@ -234,28 +234,28 @@ export default function AdminDashboard() {
           </div>
 
           {/* Segment toggle */}
-          <div className="inline-flex gap-[5px] bg-white border border-line rounded-full p-[5px] mb-[22px]">
+          <div className="inline-flex gap-[5px] bg-white border border-line rounded-full p-[5px] mb-6">
             <button
-              className={"inline-flex items-center gap-[9px] border-none cursor-pointer rounded-full py-2.5 px-5 text-[14.5px] font-semibold transition-[background,color] duration-150 ease-[ease] [&_svg]:opacity-85 " + (segment === "actives" ? "bg-ink text-white" : "bg-transparent text-ink-soft hover:text-ink")}
+              className={"inline-flex items-center gap-2 border-none cursor-pointer rounded-full py-2.5 px-5 text-[14.5px] font-semibold transition-[background,color] duration-150 ease-[ease] [&_svg]:opacity-85 " + (segment === "actives" ? "bg-ink text-white" : "bg-transparent text-ink-soft hover:text-ink")}
               onClick={() => selectSegment("actives")}
             >
               <ClockCircleIcon size={15} />
               Commandes actives
-              <span className={"min-w-[22px] h-[22px] px-[7px] rounded-full text-[12px] font-bold inline-flex items-center justify-center " + (segment === "actives" ? "bg-[rgba(255,255,255,.22)] text-white" : "bg-sand-deep text-ink-soft")}>{countInSeg("actives")}</span>
+              <span className={"min-w-6 h-6 px-[7px] rounded-full text-[12px] font-bold inline-flex items-center justify-center " + (segment === "actives" ? "bg-[rgba(255,255,255,.22)] text-white" : "bg-sand-deep text-ink-soft")}>{countInSeg("actives")}</span>
             </button>
             <button
-              className={"inline-flex items-center gap-[9px] border-none cursor-pointer rounded-full py-2.5 px-5 text-[14.5px] font-semibold transition-[background,color] duration-150 ease-[ease] [&_svg]:opacity-85 " + (segment === "archive" ? "bg-ink text-white" : "bg-transparent text-ink-soft hover:text-ink")}
+              className={"inline-flex items-center gap-2 border-none cursor-pointer rounded-full py-2.5 px-5 text-[14.5px] font-semibold transition-[background,color] duration-150 ease-[ease] [&_svg]:opacity-85 " + (segment === "archive" ? "bg-ink text-white" : "bg-transparent text-ink-soft hover:text-ink")}
               onClick={() => selectSegment("archive")}
             >
               <ArchiveIcon size={15} strokeWidth={1.9} />
               Archive
-              <span className={"min-w-[22px] h-[22px] px-[7px] rounded-full text-[12px] font-bold inline-flex items-center justify-center " + (segment === "archive" ? "bg-[rgba(255,255,255,.22)] text-white" : "bg-sand-deep text-ink-soft")}>{countInSeg("archive")}</span>
+              <span className={"min-w-6 h-6 px-[7px] rounded-full text-[12px] font-bold inline-flex items-center justify-center " + (segment === "archive" ? "bg-[rgba(255,255,255,.22)] text-white" : "bg-sand-deep text-ink-soft")}>{countInSeg("archive")}</span>
             </button>
           </div>
 
           {/* Toolbar */}
           <div className="flex items-center justify-between gap-[16px] flex-wrap mb-5">
-            <div className="flex flex-wrap gap-[9px]">
+            <div className="flex flex-wrap gap-2">
               {tabs.map((t) => (
                 <button
                   key={t.id}
@@ -336,7 +336,7 @@ function OrderCard({ o, onStatus }: { o: Order; onStatus: (num: string, s: Order
 
   return (
     <div className="bg-[var(--st-soft,#fff)] border border-line rounded-card-lg overflow-hidden" style={styleVars}>
-      <div className="grid grid-cols-[1.1fr_1.2fr_1fr_1.1fr_auto] gap-[18px] items-center py-[18px] px-[22px] max-[1040px]:grid-cols-2 max-[1040px]:gap-[16px_20px] max-[600px]:grid-cols-1">
+      <div className="grid grid-cols-[1.1fr_1.2fr_1fr_1.1fr_auto] gap-[18px] items-center py-[18px] px-6 max-[1040px]:grid-cols-2 max-[1040px]:gap-[16px_20px] max-[600px]:grid-cols-1">
         <div>
           <div className="font-serif text-[18px] font-semibold">{o.num}</div>
           <div className="text-[12.5px] text-ink-faint mt-[3px]">{fmtDate(o.createdAt)}</div>
@@ -380,7 +380,7 @@ function OrderCard({ o, onStatus }: { o: Order; onStatus: (num: string, s: Order
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-[14px] py-[14px] px-[22px] border-t border-line bg-white flex-wrap">
+      <div className="flex items-center justify-between gap-[14px] py-[14px] px-6 border-t border-line bg-white flex-wrap">
         <div className="flex flex-wrap gap-2">
           {PROGRESS.map((sid) => {
             const reached = o.status !== "annulee" && st.idx >= STATUS[sid].idx && st.idx >= 0;

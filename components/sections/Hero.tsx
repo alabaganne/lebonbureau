@@ -8,11 +8,11 @@ export default function Hero() {
     <section className="pt-16 pb-10">
       <div className="wrap grid grid-cols-[1.05fr_.95fr] gap-14 items-center max-[960px]:grid-cols-1 max-[960px]:gap-9">
         <div>
-          <span className="inline-flex items-center gap-[9px] bg-green-soft text-green-deep text-[13px] font-semibold px-[14px] py-[7px] rounded-full mb-[22px]">
+          <span className="inline-flex items-center gap-2 bg-green-soft text-green-deep text-[13px] font-semibold px-[14px] py-[7px] rounded-full mb-6">
             <span className="w-[7px] h-[7px] rounded-full bg-green" />
             Sélection ergonomique · Édition IKEA
           </span>
-          <h1 className="display mb-[22px]">
+          <h1 className="display mb-6">
             Le bureau qui<br />
             tient la <em className="italic text-green">distance</em>.
           </h1>

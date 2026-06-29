@@ -55,7 +55,7 @@ export default function Listing({ products }: { products: Product[] }) {
             <ProductCard key={p.id} product={p} imgWidth={800} imgHeight={600} />
           ))}
         </div>
-        <p className="text-sm text-ink-faint mt-[22px]">{countNote}</p>
+        <p className="text-sm text-ink-faint mt-6">{countNote}</p>
       </div>
     </section>
   );
