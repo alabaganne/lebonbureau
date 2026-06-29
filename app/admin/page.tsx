@@ -186,20 +186,23 @@ export default function AdminDashboard() {
       {/* TOPBAR */}
       <header className="sticky top-0 z-50 bg-ink text-white border-b border-[rgba(255,255,255,.08)]">
         <div className="wrap flex items-center justify-between h-[66px]">
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div className="flex items-center gap-3">
             <Link className="inline-flex items-baseline gap-0.5 font-serif text-[21px] font-semibold tracking-[-.02em] text-white" href="/admin">
               Le<span className="text-[#6fbfa6]">Bon</span>Bureau<span className="text-[#6fbfa6]">.</span>
             </Link>
-            <span className="inline-flex items-center gap-[7px] text-[11.5px] font-bold tracking-[.12em] uppercase text-[#cfe7df] bg-[rgba(111,191,166,.14)] border border-[rgba(111,191,166,.3)] py-[5px] px-[11px] rounded-full ml-[14px]">Admin</span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[.06] px-3 py-1 text-[12px] font-semibold text-white/75">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#6fbfa6]" />
+              Admin
+            </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <span className="text-[13.5px] text-[#b9b7ad]">
               Connecté en tant qu&apos;<strong style={{ color: "#fff" }}>admin</strong>
             </span>
-            <a className="inline-flex items-center gap-2 bg-[rgba(255,255,255,.08)] text-white border border-[rgba(255,255,255,.16)] rounded-full py-[9px] px-4 text-[14px] font-semibold transition-[background] duration-150 ease-[ease] hover:bg-[rgba(255,255,255,.16)]" href="/" target="_blank" rel="noopener noreferrer">
+            <a className="inline-flex h-10 items-center justify-center rounded-full border border-white bg-white px-4 text-[14px] font-semibold text-ink transition-[background,border-color] duration-150 ease-[ease] hover:border-sand hover:bg-sand" href="/" target="_blank" rel="noopener noreferrer">
               Voir la boutique
             </a>
-            <button className="inline-flex items-center gap-2 bg-[rgba(255,255,255,.08)] text-white border border-[rgba(255,255,255,.16)] rounded-full py-[9px] px-4 text-[14px] font-semibold transition-[background] duration-150 ease-[ease] hover:bg-[rgba(255,255,255,.16)]" onClick={onLogout}>
+            <button className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-white/15 bg-transparent px-4 text-[14px] font-semibold text-white/85 transition-[background,border-color,color] duration-150 ease-[ease] hover:border-white/25 hover:bg-white/10 hover:text-white" onClick={onLogout}>
               <LogoutIcon size={15} />
               Déconnexion
             </button>
@@ -233,7 +236,7 @@ export default function AdminDashboard() {
           {/* Segment toggle */}
           <div className="inline-flex gap-[5px] bg-white border border-line rounded-full p-[5px] mb-[22px]">
             <button
-              className={"inline-flex items-center gap-[9px] border-none bg-transparent cursor-pointer rounded-full py-2.5 px-5 text-[14.5px] font-semibold transition-[background,color] duration-150 ease-[ease] [&_svg]:opacity-85 " + (segment === "actives" ? "bg-ink text-white" : "text-ink-soft hover:text-ink")}
+              className={"inline-flex items-center gap-[9px] border-none cursor-pointer rounded-full py-2.5 px-5 text-[14.5px] font-semibold transition-[background,color] duration-150 ease-[ease] [&_svg]:opacity-85 " + (segment === "actives" ? "bg-ink text-white" : "bg-transparent text-ink-soft hover:text-ink")}
               onClick={() => selectSegment("actives")}
             >
               <ClockCircleIcon size={15} />
@@ -241,7 +244,7 @@ export default function AdminDashboard() {
               <span className={"min-w-[22px] h-[22px] px-[7px] rounded-full text-[12px] font-bold inline-flex items-center justify-center " + (segment === "actives" ? "bg-[rgba(255,255,255,.22)] text-white" : "bg-sand-deep text-ink-soft")}>{countInSeg("actives")}</span>
             </button>
             <button
-              className={"inline-flex items-center gap-[9px] border-none bg-transparent cursor-pointer rounded-full py-2.5 px-5 text-[14.5px] font-semibold transition-[background,color] duration-150 ease-[ease] [&_svg]:opacity-85 " + (segment === "archive" ? "bg-ink text-white" : "text-ink-soft hover:text-ink")}
+              className={"inline-flex items-center gap-[9px] border-none cursor-pointer rounded-full py-2.5 px-5 text-[14.5px] font-semibold transition-[background,color] duration-150 ease-[ease] [&_svg]:opacity-85 " + (segment === "archive" ? "bg-ink text-white" : "bg-transparent text-ink-soft hover:text-ink")}
               onClick={() => selectSegment("archive")}
             >
               <ArchiveIcon size={15} strokeWidth={1.9} />
