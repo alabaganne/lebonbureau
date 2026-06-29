@@ -5,6 +5,7 @@
 
 import { type FormEvent, useRef } from "react";
 import { useToast } from "@/lib/toast";
+import Button from "@/components/Button";
 import { PhoneIcon, MailIcon } from "@/components/Icons";
 
 export default function ContactSection() {
@@ -94,9 +95,9 @@ export default function ContactSection() {
               />
             </div>
           </div>
-          <button className="btn btn-primary btn-lg btn-block" type="submit" style={{ marginTop: 18 }}>
+          <Button variant="primary" size="lg" block type="submit" style={{ marginTop: 18 }}>
             Envoyer le message
-          </button>
+          </Button>
           <p className="submit-note" style={{ marginTop: 14 }}>
             Nous ne partageons jamais vos coordonnées.
           </p>

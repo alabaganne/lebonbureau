@@ -7,6 +7,7 @@ import Link from "next/link";
 import { formatDT, photoImg } from "@/lib/data";
 import { itemKey, useCart, type CartItem } from "@/lib/cart";
 import { useToast } from "@/lib/toast";
+import Button from "@/components/Button";
 import { ArrowLeftIcon, PlusIcon, TrashIcon, CartIcon, LockIcon } from "@/components/Icons";
 
 export default function CartPage() {
@@ -79,7 +80,7 @@ export default function CartPage() {
               Parcourez notre sélection de bureaux ergonomiques et trouvez celui qui tiendra la
               distance.
             </p>
-            <Link className="btn btn-primary btn-lg" href="/#catalogue">Voir le catalogue</Link>
+            <Button href="/#catalogue" variant="primary" size="lg">Voir le catalogue</Button>
           </div>
         </main>
       ) : (
@@ -123,7 +124,7 @@ export default function CartPage() {
               <span className="l">Total</span>
               <span className="t">{formatDT(total)}</span>
             </div>
-            <Link className="btn btn-primary btn-lg btn-block" href="/checkout">Passer la commande</Link>
+            <Button href="/checkout" variant="primary" size="lg" block>Passer la commande</Button>
             <p className="summary-note">
               <LockIcon size={15} />
               Paiement à la livraison ou par carte. Vos données restent confidentielles.

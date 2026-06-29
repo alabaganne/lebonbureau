@@ -6,6 +6,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { isAdmin, signIn } from "@/lib/auth";
+import Button from "@/components/Button";
 import { ArrowLeftIcon, AlertIcon } from "@/components/Icons";
 
 export default function AdminLoginPage() {
@@ -67,9 +68,9 @@ export default function AdminLoginPage() {
               <input id="pass" name="pass" type="password" autoComplete="current-password" placeholder="••••••••" required />
             </div>
 
-            <button className="btn btn-primary btn-lg btn-block" type="submit" style={{ marginTop: 6 }} disabled={busy}>
+            <Button variant="primary" size="lg" block type="submit" style={{ marginTop: 6 }} disabled={busy}>
               {busy ? "Connexion…" : "Se connecter"}
-            </button>
+            </Button>
 
             <div className="login-hint">
               <strong style={{ color: "var(--ink-soft)" }}>Démo</strong> — e-mail{" "}

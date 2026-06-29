@@ -1,7 +1,7 @@
 /* Landing green feature band — "Nos engagements". One of the few colored
    sections on the white canvas. */
 
-import Link from "next/link";
+import Button from "@/components/Button";
 import { CheckIcon } from "@/components/Icons";
 import { img } from "@/lib/data";
 
@@ -34,9 +34,9 @@ export default function GreenBand() {
                 </li>
               ))}
             </ul>
-            <Link className="btn" href="/#catalogue" style={{ background: "#fff", color: "var(--green-deep)" }}>
+            <Button href="/#catalogue" variant="light">
               Choisir mon bureau
-            </Link>
+            </Button>
           </div>
           <div className="band-visual">
             {/* eslint-disable-next-line @next/next/no-img-element */}

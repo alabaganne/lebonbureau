@@ -2,6 +2,7 @@
    the storefront chrome itself since it sits outside the (storefront) group. */
 
 import Link from "next/link";
+import Button from "@/components/Button";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -17,8 +18,8 @@ export default function NotFound() {
           est bien là.
         </p>
         <div className="nf-links">
-          <Link className="btn btn-primary btn-lg" href="/#catalogue">Voir le catalogue</Link>
-          <Link className="btn btn-ghost btn-lg" href="/">Retour à l&apos;accueil</Link>
+          <Button href="/#catalogue" variant="primary" size="lg">Voir le catalogue</Button>
+          <Button href="/" variant="ghost" size="lg">Retour à l&apos;accueil</Button>
         </div>
         <p style={{ marginTop: 38, fontSize: 14.5, color: "var(--ink-faint)" }}>
           Besoin d&apos;aide&nbsp;?{" "}

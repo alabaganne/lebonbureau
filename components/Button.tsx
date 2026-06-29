@@ -8,7 +8,7 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "dark" | "ghost";
+type Variant = "primary" | "dark" | "ghost" | "light";
 type Size = "md" | "lg";
 
 interface BaseProps {

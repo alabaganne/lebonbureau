@@ -10,7 +10,8 @@ import { formatDT, GOVERNORATES, photoImg } from "@/lib/data";
 import { useCart } from "@/lib/cart";
 import { useToast } from "@/lib/toast";
 import { makeOrderNum, saveOrder, type Order } from "@/lib/orders";
-import { ArrowLeftIcon, LockIcon } from "@/components/Icons";
+import Button from "@/components/Button";
+import { ArrowLeftIcon, LockIcon, CheckBigIcon } from "@/components/Icons";
 
 interface Confirmation {
   firstName: string;
@@ -137,9 +138,7 @@ export default function CheckoutPage() {
     return (
       <div className="wrap confirm">
         <div className="check">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 13l4 4L19 7" />
-          </svg>
+          <CheckBigIcon size={36} />
         </div>
         <h1>Merci, {confirmation.firstName} commande est confirmée&nbsp;!</h1>
         <p className="lead">
@@ -156,7 +155,7 @@ export default function CheckoutPage() {
           <hr className="ob-rule" />
           <div className="ob-row"><span className="k">Total</span><span className="v">{formatDT(confirmation.total)}</span></div>
         </div>
-        <Link className="btn btn-primary btn-lg" href="/">Retour à l&apos;accueil</Link>
+        <Button href="/" variant="primary" size="lg">Retour à l&apos;accueil</Button>
       </div>
     );
   }
@@ -311,7 +310,7 @@ export default function CheckoutPage() {
           <hr className="summary-rule" />
           <div className="summary-total"><span className="l">Total à payer</span><span className="t">{formatDT(total)}</span></div>
           <div className="submit-block">
-            <button className="btn btn-primary btn-lg btn-block" type="submit">Confirmer la commande</button>
+            <Button variant="primary" size="lg" block type="submit">Confirmer la commande</Button>
             <p className="submit-note">En confirmant, vous acceptez nos conditions générales de vente.</p>
           </div>
         </aside>

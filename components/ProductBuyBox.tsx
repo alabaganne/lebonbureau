@@ -282,14 +282,14 @@ export default function ProductBuyBox({ product: p }: { product: Product }) {
                   +
                 </button>
               </div>
-              <button className="btn btn-primary btn-lg" style={{ flex: 1 }} onClick={openExpress}>
+              <Button variant="primary" size="lg" style={{ flex: 1 }} onClick={openExpress}>
                 Commander maintenant
-              </button>
+              </Button>
             </div>
-            <button className="btn btn-ghost btn-lg btn-block" style={{ marginBottom: 6 }} onClick={onAddToCart}>
+            <Button variant="ghost" size="lg" block style={{ marginBottom: 6 }} onClick={onAddToCart}>
               <CartIcon size={18} strokeWidth={1.9} />
               Ajouter au panier
-            </button>
+            </Button>
             <p className="pd-cod-note">
               <CheckTinyIcon size={15} />
               Paiement <strong>à la livraison</strong> — aucune avance, vous payez à réception.
@@ -368,9 +368,9 @@ export default function ProductBuyBox({ product: p }: { product: Product }) {
                       />
                     </div>
                   </div>
-                  <button className="btn btn-primary btn-lg btn-block" type="submit" style={{ marginTop: 4 }}>
+                  <Button variant="primary" size="lg" block type="submit" style={{ marginTop: 4 }}>
                     Valider ma commande
-                  </button>
+                  </Button>
                   <p className="submit-note" style={{ marginTop: 12 }}>
                     En validant, vous acceptez nos{" "}
                     <a href="/mentions-legales#cgv" style={{ color: "var(--green)", textDecoration: "underline" }}>
@@ -409,9 +409,9 @@ export default function ProductBuyBox({ product: p }: { product: Product }) {
           <span className="now">{formatDT(p.price)}</span>
           <span className="lbl">Payez à la livraison</span>
         </div>
-        <button className="btn btn-primary btn-lg" onClick={openExpress}>
+        <Button variant="primary" size="lg" onClick={openExpress}>
           Commander
-        </button>
+        </Button>
       </div>
     </>
   );
