@@ -2,8 +2,7 @@
 
 French e-commerce storefront for ergonomic gaming / programming desks, built for
 the Tunisian market (prices in **DT**, payment on delivery, French copy). Built
-with **Next.js (App Router) + TypeScript**, recreating the Claude Design
-prototype pixel-for-pixel as real components.
+with **Next.js (App Router) + TypeScript**, implementing the storefront design as reusable components.
 
 ## Run
 
@@ -18,11 +17,11 @@ npm run build && npm run start   # production
 | Route | Page |
 | --- | --- |
 | `/` | Landing — hero, catalogue listing (filterable), green band, "bien choisir", contact |
-| `/product/[id]` | Product detail — gallery, options, add-to-cart, **express COD order**, specs, related |
+| `/product/[id]` | Product detail — gallery, options, add-to-cart, **express cash-on-delivery order**, specs, related |
 | `/cart` | Cart with live quantity / remove + order summary |
 | `/checkout` | 3-step delivery form → inline confirmation |
 | `/faq` · `/livraison-retours` · `/mentions-legales` | Content / legal pages |
-| `/admin/login` | Admin sign-in (demo: `admin` / `lebonbureau`) |
+| `/admin/login` | Admin sign-in with Supabase Auth |
 | `/admin` | Orders dashboard — stats, active/archive segments, status workflow, search, pagination |
 | any other | 404 |
 
@@ -34,7 +33,7 @@ app/
   (storefront)/           Route group sharing the nav + footer chrome
     layout.tsx            SiteHeader + children + SiteFooter
     page.tsx              Landing
-    product/[id]/         SSG per product (generateStaticParams)
+    product/[id]/         server-rendered product pages
     cart/ checkout/ faq/ livraison-retours/ mentions-legales/
   admin/                  Own chrome (dark topbar) — login + dashboard
   not-found.tsx           Global 404
@@ -47,12 +46,12 @@ components/
   ProductBuyBox.tsx       Interactive product buy box (client island)
   sections/               Landing sections: Hero, TrustBar, Listing, GreenBand, ErgoSteps, ContactSection
 lib/
-  data.ts                 Product catalogue, governorates, price/image helpers
+  data.ts                 Product types, governorates, price/image helpers
   cart.tsx                CartProvider + useCart  (localStorage)
   orders.ts               Order types, status system, storage helpers
   toast.tsx               ToastProvider + useToast
-  auth.ts                 Admin session (demo)
-  demo.ts                 Seed demo orders for the dashboard
+  auth.ts                 Supabase admin authentication
+  demo.ts                 Sample orders for local development
 styles/                   storefront.css (page sections) + admin.css
 app/globals.css           Design system (tokens, buttons, nav, cards, forms…)
 ```
@@ -67,8 +66,7 @@ app/globals.css           Design system (tokens, buttons, nav, cards, forms…)
 ## Database — local Supabase
 
 Orders and admin auth run on **Supabase** (Postgres + Auth), running locally via
-Docker. The product catalogue stays static in `lib/data.ts`, and the cart stays
-client-side (`localStorage` key `lbb_cart`).
+Docker. The product catalogue is stored in Supabase and read through `lib/products.ts`. The cart stays client-side (`localStorage` key `lbb_cart`).
 
 ### First-time setup
 
@@ -83,7 +81,7 @@ npm run dev                 # http://localhost:3000
 ```
 
 `db:seed` runs `seed:products` (the 6 desks) then `seed:admin`
-(`ADMIN_EMAIL`/`ADMIN_PASSWORD`). Re-run `seed:products` any time you change
+(`ADMIN_EMAIL`/`ADMIN_PASSWORD`). For local demo data, re-run `seed:products` when you change
 `scripts/seed-products.mjs`.
 
 Studio (DB browser): `http://127.0.0.1:54323`. Stop the stack with `npm run db:stop`.
