@@ -105,3 +105,9 @@ Studio (DB browser): `http://127.0.0.1:54323`. Stop the stack with `npm run db:s
 - **Admin user** → `scripts/seed-admin.mjs` (run via `npm run seed:admin`).
 
 Product photography is served from the Pexels CDN (allowed in `next.config.mjs`).
+
+## Demo
+
+[Open the demo](https://lebonbureau.alabaganne.com).
+
+![LeBonBureau screenshot](https://raw.githubusercontent.com/alabaganne/Portfolio/main/public/projects/lebonbureau-demo.jpg)
